@@ -13,13 +13,6 @@ await cargar()
 watch(usuario, () => cargar())
 watch(() => route.fullPath, () => (abierto.value = false))
 
-// En el inicio el encabezado queda transparente sobre la foto de la portada hasta que se baja un poco.
-const arriba = ref(true)
-const sobrePortada = computed(() => route.path === '/' && arriba.value)
-function medir() { arriba.value = window.scrollY < 40 }
-onMounted(() => { medir(); window.addEventListener('scroll', medir, { passive: true }) })
-onBeforeUnmount(() => window.removeEventListener('scroll', medir))
-
 const contacto = computed(() => ligasDeContacto(ajustes.value))
 const horario = computed(() => {
   const h = ajustes.value?.horarios ?? []
@@ -39,7 +32,7 @@ async function salir() {
     <div class="franja">
       Pedidos con <b>{{ ajustes?.dias_anticipacion ?? 2 }} días de anticipación</b> · Entrega a domicilio en Guadalajara o recolección · Pago en línea
     </div>
-    <header class="barra" :class="{ 'sobre-portada': sobrePortada }">
+    <header class="barra">
       <div class="contenedor">
         <nav class="menu" aria-label="Tienda">
           <NuxtLink to="/productos">Productos</NuxtLink>
@@ -53,7 +46,7 @@ async function salir() {
           <NuxtLink v-if="usuario" to="/mis-pedidos">Mis pedidos</NuxtLink>
           <button v-if="usuario" class="enlace" @click="salir">Salir</button>
           <NuxtLink v-else to="/entrar">Entrar</NuxtLink>
-          <NuxtLink to="/carrito" class="carrito">Carrito<ClientOnly><span v-if="piezas" class="carrito-cuenta">{{ piezas }}</span></ClientOnly></NuxtLink>
+          <NuxtLink to="/carrito" class="carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.2 11h10.6L20 8H7" /><circle cx="9.5" cy="19" r="1.3" /><circle cx="17" cy="19" r="1.3" /></svg>Carrito<ClientOnly><span v-if="piezas" class="carrito-cuenta">{{ piezas }}</span></ClientOnly></NuxtLink>
         </nav>
         <div class="acciones-movil">
           <NuxtLink to="/carrito" class="boton chico secundario">Carrito<ClientOnly><span v-if="piezas" class="carrito-cuenta">{{ piezas }}</span></ClientOnly></NuxtLink>
@@ -76,7 +69,7 @@ async function salir() {
       <div class="contenedor">
         <div class="columnas">
           <div class="pila">
-            <img class="logo-pie" src="/marca/logo-lizis-coral.png" alt="Lizis Pastelería" width="440" height="600">
+            <img class="logo-pie" src="/marca/logo-lizis-blanco.png" alt="Lizis Pastelería" width="440" height="600">
             <p style="margin: 0">Repostería artesanal hecha a mano en Guadalajara, Jalisco.</p>
           </div>
           <div>
@@ -118,7 +111,7 @@ async function salir() {
         </div>
         <div class="base">
           <span>© {{ new Date().getFullYear() }} Lizis Pastelería</span>
-          <span class="prueba">Pagos seguros con Stripe · modo de prueba del prototipo</span>
+          <span class="prueba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>Pagos seguros con Stripe · modo de prueba del prototipo</span>
         </div>
       </div>
     </footer>

@@ -13,6 +13,13 @@ await cargar()
 watch(usuario, () => cargar())
 watch(() => route.fullPath, () => (abierto.value = false))
 
+// En el inicio el encabezado queda transparente sobre la foto de la portada hasta que se baja un poco.
+const arriba = ref(true)
+const sobrePortada = computed(() => route.path === '/' && arriba.value)
+function medir() { arriba.value = window.scrollY < 40 }
+onMounted(() => { medir(); window.addEventListener('scroll', medir, { passive: true }) })
+onBeforeUnmount(() => window.removeEventListener('scroll', medir))
+
 const contacto = computed(() => ligasDeContacto(ajustes.value))
 const horario = computed(() => {
   const h = ajustes.value?.horarios ?? []
@@ -32,14 +39,14 @@ async function salir() {
     <div class="franja">
       Pedidos con <b>{{ ajustes?.dias_anticipacion ?? 2 }} días de anticipación</b> · Entrega a domicilio en Guadalajara o recolección · Pago en línea
     </div>
-    <header class="barra">
+    <header class="barra" :class="{ 'sobre-portada': sobrePortada }">
       <div class="contenedor">
         <nav class="menu" aria-label="Tienda">
           <NuxtLink to="/productos">Productos</NuxtLink>
           <NuxtLink to="/pastel-personalizado">Pasteles personalizados</NuxtLink>
         </nav>
         <NuxtLink to="/" class="logo" aria-label="Lizis Pastelería, inicio">
-          <img src="/marca/logo-lizis.png" alt="Lizis Pastelería" width="440" height="600">
+          <img src="/marca/logo-lizis-coral.png" alt="Lizis Pastelería" width="440" height="600">
         </NuxtLink>
         <nav class="menu derecha" aria-label="Cuenta">
           <NuxtLink v-if="esAdmin" to="/admin">Administración</NuxtLink>
@@ -69,7 +76,7 @@ async function salir() {
       <div class="contenedor">
         <div class="columnas">
           <div class="pila">
-            <img class="logo-pie" src="/marca/logo-lizis-crema.png" alt="Lizis Pastelería" width="440" height="600">
+            <img class="logo-pie" src="/marca/logo-lizis-coral.png" alt="Lizis Pastelería" width="440" height="600">
             <p style="margin: 0">Repostería artesanal hecha a mano en Guadalajara, Jalisco.</p>
           </div>
           <div>
@@ -111,7 +118,7 @@ async function salir() {
         </div>
         <div class="base">
           <span>© {{ new Date().getFullYear() }} Lizis Pastelería</span>
-          <span class="prueba">Prototipo de Proyecto VI · pagos en modo de prueba de Stripe</span>
+          <span class="prueba">Pagos seguros con Stripe · modo de prueba del prototipo</span>
         </div>
       </div>
     </footer>

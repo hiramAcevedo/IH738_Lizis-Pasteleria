@@ -1,33 +1,35 @@
-/* Lizis Pastelería · la maqueta que eligió el equipo, con los colores de las flores de la portada: crema de fondo,
-   durazno coral en barra, pie y botones, títulos en el coral profundo y rótulos en la lavanda de las espigas.
-   Script y contrastes en Proceso/paleta/ de la actividad 4.2. Lora para los títulos y Jost para la interfaz. */
+/* Lizis Pastelería · la maqueta que eligió el equipo con la paleta de las flores de la portada: crema de fondo, durazno
+   de las flores en la barra y el pie con texto blanco, títulos en vino, botones en coral y paneles en color galleta.
+   Lora para los títulos y Jost para la interfaz. */
 
 :root {
-  /* Paleta de las flores de la portada (OKLCH): el durazno coral de las flores (h 45) para barra, pie, botones y
-     títulos, y la lavanda de sus espigas (h 319) para los rótulos. Contrastes WCAG medidos sobre el crema. */
+  /* La paleta de las flores que eligió el equipo: crema de fondo, el durazno de las flores (#f5bca2) en la barra de aviso
+     y el pie con texto blanco, títulos en vino, botones en coral y paneles en color galleta. Sin acentos morados. */
   --crema: #fcf4e4;              /* fondo de la página */
   --crema-claro: #fef8ee;
   --blanco: #ffffff;
-  --panel: #feece4;              /* paneles en el durazno muy pálido de las flores */
-  --coral: #b55334;              /* botones, con texto blanco (4.9:1) */
-  --coral-oscuro: #9f4229;       /* botón al pasar el cursor */
-  --coral-fuerte: #a86247;       /* barra de aviso y pie, con texto blanco (4.7:1) */
-  --terracota: #b55334;
-  --terracota-oscuro: #a6482f;   /* enlaces y acento en texto chico (5.4:1) */
-  --titulo: #6f3421;             /* títulos y logo (8.8:1) */
-  --cafe: #6f3421;
-  --cafe-oscuro: #55271a;
-  --texto: #54443d;              /* cuerpo (8.5:1) */
-  --suave: #6b5a52;              /* texto secundario */
-  --rotulo: #7b4f87;             /* rótulos en la lavanda de las flores (5.8:1) */
+  --panel: #f6e3c9;              /* paneles («Tu pedido en tres pasos», «Crea el tuyo») en color galleta */
+  --coral: #be524c;              /* botones, con texto blanco (4.7:1) */
+  --coral-oscuro: #a63c38;       /* botón al pasar el cursor */
+  --coral-fuerte: #f5bca2;       /* el durazno de las flores, en barra y pie */
+  --terracota: #be524c;
+  --terracota-oscuro: #aa403b;   /* enlaces y acento en texto chico (5.5:1) */
+  --titulo: #752a32;             /* títulos y logo (9:1) */
+  --cafe: #752a32;
+  --cafe-oscuro: #5a1e25;
+  --texto: #5f544b;              /* cuerpo (6.7:1) */
+  --suave: #6e6258;              /* texto secundario */
+  --rotulo: #aa403b;             /* rótulos en coral */
   --linea: #ecdcc8;
   --borde-campo: #b0938a;
   --sobre-oscuro: #ffffff;
   --sobre-oscuro-suave: #ffffff;
   --fondo-tarjeta: #fef8ee;
-  --franja-fondo: #a86247; --franja-texto: #ffffff;
-  --pie-fondo: #a86247; --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.32);
+  --franja-fondo: #f5bca2; --franja-texto: #ffffff;
+  --pie-fondo: #f5bca2; --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.6);
   --pie-logo-claro: block; --pie-logo-color: none;
+  /* el blanco sobre el durazno queda en 1.7:1: una sombra muy suave en el tono vino le da cuerpo para leerse */
+  --sombra-texto-claro: 0 1px 2px rgba(117, 42, 50, 0.45), 0 0 1px rgba(117, 42, 50, 0.35);
   --portada-medio: #fdeae1; --portada-fondo: #fee5db;
   --exito: #13602e;
   --aviso: #6c4700;
@@ -36,7 +38,7 @@
   --radio: 14px;
   --radio-control: 10px;
   --radio-chico: 6px;
-  --sombra: 0 1px 2px rgba(84, 68, 61, 0.06), 0 10px 28px rgba(84, 68, 61, 0.1);
+  --sombra: 0 1px 2px rgba(95, 84, 75, 0.06), 0 10px 28px rgba(95, 84, 75, 0.1);
   --marca: 'Lora', Georgia, serif;
   --ui: 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
@@ -137,7 +139,7 @@ textarea { min-height: 96px; resize: vertical; }
 @media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 0.9fr; } }
 
 /* Barra de aviso en coral */
-.franja { background: var(--franja-fondo); color: var(--franja-texto); font: 400 0.82rem var(--ui); letter-spacing: 0.04em; text-align: center; padding: 8px 16px; }
+.franja { background: var(--franja-fondo); color: var(--franja-texto); text-shadow: var(--sombra-texto-claro); font: 500 0.82rem var(--ui); letter-spacing: 0.04em; text-align: center; padding: 8px 16px; }
 .franja b { font-weight: 500; }
 
 /* Encabezado: menú en mayúsculas a los lados y el logo al centro */
@@ -174,10 +176,10 @@ textarea { min-height: 96px; resize: vertical; }
 }
 
 /* Pie en coral, como la barra de aviso */
-.pie { background: var(--pie-fondo); color: var(--pie-texto); padding: 44px 0 22px; font-size: 0.92rem; }
+.pie { background: var(--pie-fondo); color: var(--pie-texto); text-shadow: var(--sombra-texto-claro); font-weight: 500; padding: 44px 0 22px; font-size: 0.92rem; }
 .pie .columnas { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 860px) { .pie .columnas { grid-template-columns: 1.3fr 1fr 1fr 1fr; } .pie .columnas > div + div { border-left: 1px solid var(--pie-linea); padding-left: 28px; } }
-.pie img.logo-pie { height: 84px; width: auto; }
+.pie img.logo-pie { height: 84px; width: auto; filter: drop-shadow(0 1px 2px rgba(117, 42, 50, 0.35)); }
 .pie img.logo-pie.claro { display: var(--pie-logo-claro); }
 .pie img.logo-pie.color { display: var(--pie-logo-color); }
 .pie h4 { font: 500 0.76rem var(--ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--pie-texto); margin: 4px 0 12px; }

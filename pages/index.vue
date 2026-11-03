@@ -28,18 +28,16 @@ useHead({ title: 'Lizis Pastelería · Repostería artesanal en Guadalajara' })
 <template>
   <div>
     <section class="portada">
-      <div class="contenedor">
-        <div class="portada-caja">
-          <img class="portada-fondo" src="/fotos/portada.jpg" alt="Plato de roles de canela glaseados con lavanda, junto a ramas de flores, sobre una mesa con luz de ventana">
-          <div class="portada-texto">
-            <span class="rotulo">Repostería artesanal · Guadalajara</span>
-            <h1>Roles de canela, brownies y pasteles hechos <em>a mano</em></h1>
-            <p class="entrada">Horneamos sobre pedido desde 2020. Elige tus favoritos, programa el día de entrega y paga en línea.</p>
-            <hr class="raya">
-            <div class="fila">
-              <NuxtLink to="/productos" class="boton">Ver productos</NuxtLink>
-              <NuxtLink to="/pastel-personalizado" class="boton secundario">Cotizar un pastel</NuxtLink>
-            </div>
+      <div class="portada-capa" role="img" aria-label="Plato de roles de canela glaseados con lavanda junto a ramas de flores, con luz de ventana" />
+      <div class="contenedor portada-contenido">
+        <div class="portada-texto">
+          <span class="rotulo">Repostería artesanal · Guadalajara</span>
+          <h1>Roles de canela, brownies y pasteles hechos <em>a mano</em></h1>
+          <p class="entrada">Horneamos sobre pedido desde 2020. Elige tus favoritos, programa el día de entrega y paga en línea.</p>
+          <hr class="raya">
+          <div class="fila">
+            <NuxtLink to="/productos" class="boton">Ver productos</NuxtLink>
+            <NuxtLink to="/pastel-personalizado" class="boton secundario">Cotizar un pastel</NuxtLink>
           </div>
         </div>
       </div>

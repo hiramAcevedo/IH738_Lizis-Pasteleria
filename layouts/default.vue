@@ -13,6 +13,13 @@ await cargar()
 watch(usuario, () => cargar())
 watch(() => route.fullPath, () => (abierto.value = false))
 
+// En el inicio el encabezado queda transparente sobre la capa de la portada hasta que se baja un poco.
+const arriba = ref(true)
+const sobrePortada = computed(() => route.path === '/' && arriba.value)
+function medir() { arriba.value = window.scrollY < 40 }
+onMounted(() => { medir(); window.addEventListener('scroll', medir, { passive: true }) })
+onBeforeUnmount(() => window.removeEventListener('scroll', medir))
+
 const contacto = computed(() => ligasDeContacto(ajustes.value))
 const horario = computed(() => {
   const h = ajustes.value?.horarios ?? []
@@ -32,7 +39,7 @@ async function salir() {
     <div class="franja">
       Pedidos con <b>{{ ajustes?.dias_anticipacion ?? 2 }} días de anticipación</b> · Entrega a domicilio en Guadalajara o recolección · Pago en línea
     </div>
-    <header class="barra">
+    <header class="barra" :class="{ 'sobre-portada': sobrePortada }">
       <div class="contenedor">
         <nav class="menu" aria-label="Tienda">
           <NuxtLink to="/productos">Productos</NuxtLink>

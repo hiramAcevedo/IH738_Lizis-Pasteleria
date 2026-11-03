@@ -138,6 +138,8 @@ textarea { min-height: 96px; resize: vertical; }
 
 /* Encabezado: menú en mayúsculas a los lados y el logo al centro */
 .barra { background: var(--crema); border-bottom: 1px solid var(--linea); position: sticky; top: 0; z-index: 20; }
+/* En el inicio, arriba, el encabezado deja ver la capa de la portada que se difumina hacia él */
+.barra.sobre-portada { background: transparent; border-bottom-color: transparent; }
 .barra .contenedor { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; min-height: 96px; }
 .logo { display: block; line-height: 0; }
 .logo img { height: 78px; width: auto; }
@@ -184,25 +186,32 @@ textarea { min-height: 96px; resize: vertical; }
 .prueba { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radio-control); border: 1px solid var(--blanco); color: var(--blanco); font-size: 0.82rem; }
 .prueba svg { width: 15px; height: 15px; }
 
-/* Portada: una sola foto dentro del ancho de la página (flores a la izquierda, el plato a la derecha cortado por abajo y
-   la superficie con sombras de ventana en medio, donde va el texto); todo agrupado. En el celular el texto va encima de
-   la foto y del plato sólo asoma una parte, abajo a la derecha. */
-.portada { padding: 22px 0 6px; }
-.portada-caja { position: relative; overflow: hidden; border-radius: var(--radio); aspect-ratio: 2300 / 1024; min-height: 420px; display: flex; align-items: center; background: #f3e1cf; }
-.portada-fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right bottom; }
-.portada-texto { position: relative; z-index: 1; padding: 40px 32px 40px clamp(28px, 13.5%, 165px); max-width: 640px; }
+/* Portada en capas sobre el mismo color de la página. La capa de la foto (superficie con sombras de ventana, flores y el
+   plato cortado por abajo) tiene la parte iluminada igualada al crema del fondo; se ancla abajo, sube por detrás del
+   encabezado y se difumina hacia la barra de navegación y hacia los lados. Se ve completa a lo ancho, hasta 1320 px,
+   para que flores, texto y plato queden juntos. */
+.portada { position: relative; overflow: hidden; margin-top: -97px; padding-top: 97px;
+  min-height: max(560px, calc(min(1320px, 100vw) * 1024 / 2300)); display: flex; flex-direction: column; justify-content: center; }
+.portada-capa { position: absolute; bottom: 0; left: 50%; width: min(1320px, 100%); aspect-ratio: 2300 / 1024; transform: translateX(-50%);
+  background: url('/fotos/portada-capa.jpg') center bottom / 100% auto no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, 0.4) 10%, #000 28%), linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, 0.4) 10%, #000 28%), linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-composite: intersect; }
+.portada-contenido { position: relative; z-index: 1; display: flex; align-items: center; }
+.portada-texto { padding: 32px 0 44px clamp(0px, 9%, 110px); max-width: 540px; }
 .portada h1 { font-size: clamp(2.1rem, 3.5vw, 2.9rem); margin-bottom: 0.4em; }
 .portada p.entrada { font-size: 1.06rem; max-width: 430px; color: var(--texto); }
 .portada .raya { width: 36px; height: 2px; background: var(--coral); margin: 4px 0 22px; border: 0; }
 @media (max-width: 760px) {
-  .portada { padding: 0; }
-  .portada .contenedor { width: 100%; }
-  /* La misma foto más chica y corrida: el centro del plato queda en la esquina inferior derecha y sólo asoma un cuarto */
-  .portada-caja { border-radius: 0; aspect-ratio: auto; min-height: 640px; align-items: flex-start;
-    background: #e8c6a8 url('/fotos/portada.jpg') no-repeat right -283px bottom -240px / 1300px auto; }
-  .portada-fondo { display: none; }
-  .portada-caja::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(246, 232, 216, 0.94) 0%, rgba(246, 232, 216, 0.88) 50%, rgba(246, 232, 216, 0) 72%); }
-  .portada-texto { z-index: 2; padding: 34px 20px; }
+  .portada { margin-top: -73px; padding-top: 73px; min-height: 640px; justify-content: flex-start; }
+  /* En el celular la misma capa, más chica: el centro del plato cae en la esquina inferior derecha (sólo asoma un
+     cuarto, debajo de los botones) y lo de arriba se difumina para que el texto quede sobre el crema */
+  .portada-capa { left: 0; width: 100%; height: 100%; aspect-ratio: auto; transform: none;
+    background-size: 920px auto; background-position: right -204px bottom -154px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 60%, #000 76%);
+    mask-image: linear-gradient(to bottom, transparent 0, transparent 60%, #000 76%); }
+  .portada-texto { padding: 28px 4px 40px; }
 }
 
 /* Categorías en mosaico de fotos, con nombre y una línea */

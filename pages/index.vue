@@ -99,7 +99,7 @@ useHead({ title: 'Lizis Pastelería · Repostería artesanal en Guadalajara' })
       <p class="cupo">Recibimos hasta {{ ajustes?.capacidad_diaria ?? 6 }} pedidos por día, con {{ ajustes?.dias_anticipacion ?? 2 }} días de anticipación.</p>
     </section>
 
-    <section class="seccion salvia">
+    <section class="seccion destacada">
       <div class="contenedor">
         <div>
           <span class="rotulo">Pasteles personalizados</span>

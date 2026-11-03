@@ -1,23 +1,28 @@
-/* Lizis Pastelería · la identidad del logo: crema, terracota y café, con el verde salvia de los mockups de Proyecto V.
+/* Lizis Pastelería · paleta generada en OKLCH a partir de los tres colores medidos en el logo (crema #f7f0e3,
+   terracota #a86e51 y cacao #542624): escalas de 11 pasos con el mismo tono y luminosidad perceptual en pasos iguales.
+   Roles con la regla 60-30-10: crema para los fondos, cacao para el texto y para todas las superficies fuertes
+   (franja, sección destacada y pie), terracota como acento. Contrastes WCAG medidos en el script de la paleta.
    Cormorant Garamond para los títulos (va con el trazo fino de «lizis») y Jost para la interfaz (como «pastelería»). */
 
 :root {
-  --crema: #f7f0e3;
-  --crema-claro: #fbf7ef;
+  --crema: #f7f0e3;            /* crema 100, el fondo del logo */
+  --crema-claro: #fff9ef;      /* crema 50 */
   --blanco: #ffffff;
-  --terracota: #a86e51;
-  --terracota-oscuro: #8f5a40;
-  --cafe: #542624;
-  --cafe-oscuro: #3a1d1b;
-  --texto: #3b2a26;
-  --suave: #7a6458;
-  --linea: #e8dccb;
-  --salvia: #d9dccb;
-  --salvia-oscuro: #5d6650;
-  --fondo-tarjeta: #fffdf8;
-  --exito: #3f7d4e;
-  --aviso: #b7791f;
-  --peligro: #b23b3b;
+  --terracota: #a86e51;        /* terracota 600, sólo en texto grande y adornos (3.7:1) */
+  --terracota-oscuro: #865339; /* terracota 700, acento en texto chico (5.6:1) */
+  --terracota-claro: #caa390;  /* terracota 400, acento sobre cacao (5.5:1) */
+  --cafe: #542624;             /* cacao 900, texto y superficies fuertes (11:1) */
+  --cafe-oscuro: #3c1514;      /* cacao 950 */
+  --texto: #542624;
+  --suave: #7d5653;            /* cacao 700 (5.6:1) */
+  --linea: #e6dfd1;            /* crema 200 */
+  --borde-campo: #916f6c;      /* cacao 600, borde de los campos (3.9:1) */
+  --sobre-oscuro: #f7f0e3;
+  --sobre-oscuro-suave: #d5c4c3; /* cacao 300 sobre cacao 900 (7.5:1) */
+  --fondo-tarjeta: #fff9ef;
+  --exito: #13602e;
+  --aviso: #6c4700;
+  --peligro: #813330;
   --radio: 18px;
   --sombra: 0 1px 2px rgba(58, 29, 27, 0.05), 0 10px 30px rgba(58, 29, 27, 0.08);
   --marca: 'Cormorant Garamond', Georgia, serif;
@@ -88,10 +93,10 @@ img { max-width: 100%; display: block; }
 .campo > span { font-weight: 500; font-size: 0.92rem; color: var(--cafe); }
 .campo small { color: var(--suave); }
 input, select, textarea {
-  width: 100%; padding: 11px 14px; border: 1px solid var(--linea); border-radius: 12px;
+  width: 100%; padding: 11px 14px; border: 1px solid var(--borde-campo); border-radius: 12px;
   background: var(--blanco); color: var(--texto); font: 400 1rem var(--ui);
 }
-input:focus, select:focus, textarea:focus { outline: 2px solid rgba(168, 110, 81, 0.3); border-color: var(--terracota); }
+input:focus, select:focus, textarea:focus { outline: 2px solid rgba(168, 110, 81, 0.35); border-color: var(--cafe); }
 textarea { min-height: 96px; resize: vertical; }
 .opciones { display: flex; flex-wrap: wrap; gap: 8px; }
 .opcion {
@@ -146,20 +151,20 @@ textarea { min-height: 96px; resize: vertical; }
 }
 
 /* Pie */
-.pie { background: var(--terracota-oscuro); color: #f6e9dc; padding: 56px 0 28px; margin-top: 0; font-size: 0.95rem; }
+.pie { background: var(--cafe); color: var(--sobre-oscuro-suave); padding: 56px 0 28px; margin-top: 0; font-size: 0.95rem; }
 .pie .columnas { display: grid; gap: 32px; grid-template-columns: 1fr; }
 @media (min-width: 860px) { .pie .columnas { grid-template-columns: 1.2fr 1fr 1fr 1.1fr; } }
 .pie img.logo-pie { height: 112px; width: auto; }
-.pie h4 { font: 500 0.78rem var(--ui); letter-spacing: 0.22em; text-transform: uppercase; color: var(--blanco); margin: 6px 0 14px; }
-.pie a { color: #f6e9dc; text-decoration: none; }
+.pie h4 { font: 500 0.78rem var(--ui); letter-spacing: 0.22em; text-transform: uppercase; color: var(--terracota-claro); margin: 6px 0 14px; }
+.pie a { color: var(--sobre-oscuro); text-decoration: none; }
 .pie a:hover { color: var(--blanco); text-decoration: underline; }
 .pie ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .pie .redes { display: flex; gap: 10px; flex-wrap: wrap; }
-.pie .red { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1px solid rgba(255, 255, 255, 0.55); border-radius: 999px; }
-.pie .red:hover { background: rgba(255, 255, 255, 0.12); text-decoration: none; }
+.pie .red { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border: 1px solid var(--sobre-oscuro-suave); border-radius: 999px; }
+.pie .red:hover { background: rgba(247, 240, 227, 0.1); text-decoration: none; }
 .pie .red svg { width: 18px; height: 18px; }
-.pie .base { border-top: 1px solid rgba(255, 255, 255, 0.25); margin-top: 40px; padding-top: 18px; font-size: 0.82rem; color: #ecd8c8; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.prueba { display: inline-block; padding: 4px 12px; border-radius: 999px; background: rgba(255, 255, 255, 0.14); color: var(--blanco); font-size: 0.8rem; }
+.pie .base { border-top: 1px solid rgba(213, 196, 195, 0.3); margin-top: 40px; padding-top: 18px; font-size: 0.82rem; color: var(--sobre-oscuro-suave); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.prueba { display: inline-block; padding: 4px 12px; border-radius: 999px; background: rgba(247, 240, 227, 0.1); color: var(--sobre-oscuro); font-size: 0.8rem; }
 
 /* Portada: texto a la izquierda y fotos reales a la derecha */
 .portada { padding: clamp(36px, 6vw, 72px) 0 clamp(48px, 7vw, 88px); }
@@ -196,11 +201,14 @@ textarea { min-height: 96px; resize: vertical; }
 .paso p { color: var(--suave); margin: 0; }
 .cupo { margin-top: 28px; display: inline-flex; gap: 10px; align-items: center; padding: 12px 20px; border-radius: 999px; background: var(--crema-claro); border: 1px solid var(--linea); color: var(--cafe); font-size: 0.95rem; }
 
-/* Pasteles personalizados, en verde salvia */
-.salvia { background: var(--salvia); }
-.salvia .contenedor { display: grid; gap: 36px; align-items: center; grid-template-columns: 1fr; }
-@media (min-width: 860px) { .salvia .contenedor { grid-template-columns: 0.95fr 1.05fr; } }
-.salvia .rotulo { color: var(--salvia-oscuro); }
+/* Sección destacada (pasteles personalizados): el mismo cacao de la franja y del pie, con el texto invertido */
+.destacada { background: var(--cafe); color: var(--sobre-oscuro-suave); }
+.destacada .contenedor { display: grid; gap: 36px; align-items: center; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .destacada .contenedor { grid-template-columns: 0.95fr 1.05fr; } }
+.destacada .rotulo, .destacada h2 em { color: var(--terracota-claro); }
+.destacada h2 { color: var(--sobre-oscuro); }
+.destacada .boton { background: var(--sobre-oscuro); border-color: var(--sobre-oscuro); color: var(--cafe); }
+.destacada .boton:hover { background: var(--blanco); }
 .pareja { display: grid; grid-template-columns: 1.25fr 1fr; gap: 14px; align-items: end; }
 .pareja img { width: 100%; object-fit: cover; border-radius: var(--radio); box-shadow: var(--sombra); }
 .pareja img:first-child { aspect-ratio: 4 / 5; }
@@ -246,21 +254,17 @@ textarea { min-height: 96px; resize: vertical; }
 
 /* Estados */
 .estado { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; white-space: nowrap; }
-.estado.pendiente_pago { background: #fff1dc; color: #8a5a12; }
-.estado.pagado { background: #e6f0f6; color: #1f5f8b; }
-.estado.en_preparacion { background: #f1e8f6; color: #6b3fa0; }
-.estado.listo { background: #e7f2e7; color: var(--exito); }
-.estado.entregado { background: #ececec; color: #4a4a4a; }
-.estado.cancelado { background: #fbeaea; color: var(--peligro); }
-.estado.recibida { background: #fff1dc; color: #8a5a12; }
-.estado.cotizada { background: #e6f0f6; color: #1f5f8b; }
-.estado.aceptada { background: #e7f2e7; color: var(--exito); }
-.estado.rechazada { background: #fbeaea; color: var(--peligro); }
+.estado.pendiente_pago, .estado.recibida { background: #fde8cb; color: #6c4700; }
+.estado.pagado, .estado.cotizada { background: #d9efff; color: #005580; }
+.estado.en_preparacion { background: #eee7ff; color: #594082; }
+.estado.listo, .estado.aceptada { background: #d7f4dc; color: #13602e; }
+.estado.entregado { background: #f1e9e3; color: #5c4c40; }
+.estado.cancelado, .estado.rechazada { background: #ffe4e1; color: #813330; }
 
 /* Mensajes */
-.nota { padding: 12px 16px; border-radius: 12px; background: #fff1dc; color: #6d4a10; border: 1px solid #f1d9b0; }
-.nota.ok { background: #e7f2e7; color: #2c5e38; border-color: #c4e0c8; }
-.nota.mal { background: #fbeaea; color: #8a2c2c; border-color: #efc7c7; }
+.nota { padding: 12px 16px; border-radius: 12px; background: #fde8cb; color: #6c4700; border: 1px solid rgba(108, 71, 0, 0.18); }
+.nota.ok { background: #d7f4dc; color: #13602e; border-color: rgba(19, 96, 46, 0.18); }
+.nota.mal { background: #ffe4e1; color: #813330; border-color: rgba(129, 51, 48, 0.18); }
 .aviso { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 50; background: var(--cafe); color: var(--crema); padding: 12px 22px; border-radius: 999px; box-shadow: var(--sombra); font-weight: 500; }
 
 /* Línea de tiempo */
@@ -273,12 +277,12 @@ textarea { min-height: 96px; resize: vertical; }
 @media (min-width: 960px) { .panel { grid-template-columns: 248px 1fr; } }
 .lateral { background: var(--cafe); color: var(--crema); padding: 24px 16px; }
 .lateral .logo img { height: 88px; margin: 0 auto 4px 4px; }
-.lateral .papel { font: 500 0.72rem var(--ui); letter-spacing: 0.22em; text-transform: uppercase; color: #e2c3ae; margin: 6px 0 0 6px; }
+.lateral .papel { font: 500 0.72rem var(--ui); letter-spacing: 0.22em; text-transform: uppercase; color: var(--terracota-claro); margin: 6px 0 0 6px; }
 .lateral nav { display: flex; flex-direction: column; gap: 2px; margin-top: 20px; }
 @media (max-width: 959px) { .lateral nav { flex-direction: row; flex-wrap: wrap; } }
-.lateral nav a { color: #eadfcd; text-decoration: none; padding: 9px 12px; border-radius: 10px; font-size: 0.95rem; }
+.lateral nav a { color: var(--sobre-oscuro-suave); text-decoration: none; padding: 9px 12px; border-radius: 10px; font-size: 0.95rem; }
 .lateral nav a:hover, .lateral nav a.router-link-exact-active { background: rgba(247, 240, 227, 0.12); color: var(--blanco); }
-.lateral .salir { margin-top: 20px; font-size: 0.85rem; color: #cdbba6; }
+.lateral .salir { margin-top: 20px; font-size: 0.85rem; color: var(--sobre-oscuro-suave); }
 .trabajo { padding: 28px clamp(16px, 3vw, 36px); }
 .cifras { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 .cifra b { display: block; font: 600 2.2rem var(--marca); color: var(--cafe); }

@@ -28,8 +28,8 @@ useHead({ title: 'Lizis Pastelería · Repostería artesanal en Guadalajara' })
 <template>
   <div>
     <section class="portada">
+      <img class="portada-flores" src="/fotos/flores-capa.webp" alt="" aria-hidden="true">
       <div class="portada-escena">
-        <img class="portada-flores" src="/fotos/flores-capa.webp" alt="" aria-hidden="true">
         <img class="portada-plato" src="/fotos/plato-capa.webp" alt="Plato de roles de canela glaseados con una ramita de lavanda" width="900" height="953">
       </div>
       <div class="contenedor portada-contenido">

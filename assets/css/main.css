@@ -8,7 +8,6 @@
   --crema: #fcf4e4;              /* fondo de la página */
   --crema-claro: #fef8ee;
   --blanco: #ffffff;
-  --panel: #fbe8d8;              /* paneles durazno claro: pasos y «Crea el tuyo» */
   --durazno: #faccb2;
   --coral: #be524c;              /* botones y acentos (4.3:1 en texto grande) */
   --coral-oscuro: #a63c38;       /* botón al pasar el cursor */
@@ -25,6 +24,14 @@
   --sobre-oscuro: #ffffff;
   --sobre-oscuro-suave: #ffffff;
   --fondo-tarjeta: #fef8ee;
+  /* Lo que cambia entre paletas. Por defecto, la lavanda medida en el plato (OKLCH h 298): barra y pie en lavanda
+     profunda #4c4066 con texto blanco (9.4:1), paneles y fondo de la portada en lavanda muy pálida, rótulos #635385 (6.2:1) */
+  --franja-fondo: #4c4066; --franja-texto: #ffffff;
+  --pie-fondo: #4c4066; --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.3);
+  --pie-logo-claro: block; --pie-logo-color: none;
+  --panel: #f1eefa;
+  --portada-medio: #f5edf4; --portada-fondo: #f2eaf4;
+  --rotulo: #635385;
   --exito: #13602e;
   --aviso: #6c4700;
   --peligro: #813330;
@@ -69,7 +76,7 @@ img { max-width: 100%; display: block; }
 .pila > * + * { margin-top: 14px; }
 
 /* Rótulo pequeño en mayúsculas espaciadas */
-.rotulo { display: inline-block; font: 500 0.76rem var(--ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracota-oscuro); margin-bottom: 10px; }
+.rotulo { display: inline-block; font: 500 0.76rem var(--ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--rotulo); margin-bottom: 10px; }
 .encabezado-seccion { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
 .encabezado-seccion h2 { margin: 0; }
 .encabezado-seccion.centrado { flex-direction: column; align-items: center; text-align: center; }
@@ -133,7 +140,7 @@ textarea { min-height: 96px; resize: vertical; }
 @media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 0.9fr; } }
 
 /* Barra de aviso en coral */
-.franja { background: var(--coral-fuerte); color: var(--blanco); font: 400 0.82rem var(--ui); letter-spacing: 0.04em; text-align: center; padding: 8px 16px; }
+.franja { background: var(--franja-fondo); color: var(--franja-texto); font: 400 0.82rem var(--ui); letter-spacing: 0.04em; text-align: center; padding: 8px 16px; }
 .franja b { font-weight: 500; }
 
 /* Encabezado: menú en mayúsculas a los lados y el logo al centro */
@@ -170,20 +177,22 @@ textarea { min-height: 96px; resize: vertical; }
 }
 
 /* Pie en coral, como la barra de aviso */
-.pie { background: var(--coral-fuerte); color: var(--blanco); padding: 44px 0 22px; font-size: 0.92rem; }
+.pie { background: var(--pie-fondo); color: var(--pie-texto); padding: 44px 0 22px; font-size: 0.92rem; }
 .pie .columnas { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; }
-@media (min-width: 860px) { .pie .columnas { grid-template-columns: 1.3fr 1fr 1fr 1fr; } .pie .columnas > div + div { border-left: 1px solid rgba(255, 255, 255, 0.35); padding-left: 28px; } }
+@media (min-width: 860px) { .pie .columnas { grid-template-columns: 1.3fr 1fr 1fr 1fr; } .pie .columnas > div + div { border-left: 1px solid var(--pie-linea); padding-left: 28px; } }
 .pie img.logo-pie { height: 84px; width: auto; }
-.pie h4 { font: 500 0.76rem var(--ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--blanco); margin: 4px 0 12px; }
-.pie a { color: var(--blanco); text-decoration: none; }
+.pie img.logo-pie.claro { display: var(--pie-logo-claro); }
+.pie img.logo-pie.color { display: var(--pie-logo-color); }
+.pie h4 { font: 500 0.76rem var(--ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--pie-texto); margin: 4px 0 12px; }
+.pie a { color: var(--pie-texto); text-decoration: none; }
 .pie a:hover { text-decoration: underline; }
 .pie ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
 .pie .redes { display: flex; gap: 10px; flex-wrap: wrap; }
-.pie .red { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid var(--blanco); border-radius: var(--radio-control); color: var(--blanco); }
+.pie .red { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid var(--pie-texto); border-radius: var(--radio-control); color: var(--pie-texto); }
 .pie .red:hover { background: rgba(255, 255, 255, 0.12); text-decoration: none; }
 .pie .red svg { width: 18px; height: 18px; }
-.pie .base { border-top: 1px solid rgba(255, 255, 255, 0.35); margin-top: 28px; padding-top: 14px; font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-.prueba { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radio-control); border: 1px solid var(--blanco); color: var(--blanco); font-size: 0.82rem; }
+.pie .base { border-top: 1px solid var(--pie-linea); margin-top: 28px; padding-top: 14px; font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.prueba { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radio-control); border: 1px solid var(--pie-texto); color: var(--pie-texto); font-size: 0.82rem; }
 .prueba svg { width: 15px; height: 15px; }
 
 /* Portada en capas sobre la página: fondo, flores, plato y utensilios, cada uno por separado y con transparencia.
@@ -191,19 +200,21 @@ textarea { min-height: 96px; resize: vertical; }
    abajo, donde la portada se corta en recto. Texto y plato se miden desde ese corte inferior: el plato, completo de lado
    a lado, asoma 82 % de su alto y el texto queda siempre a 64 px del corte, a la altura del plato en cualquier pantalla.
    Flores y utensilios van pegados a las orillas de la pantalla y desenfocados. */
-.portada { --plato: clamp(340px, calc(min(1320px, 100vw) * 0.37), 490px);
+.portada { --banda: min(1320px, 100vw); --plato: clamp(340px, calc(var(--banda) * 0.37), 490px);
+  --margen-plato: clamp(20px, calc(var(--banda) * 0.05), 70px); --caja: min(1180px, calc(100vw - 32px));
+  --texto-max: calc((100vw + var(--banda)) / 2 - var(--margen-plato) - var(--plato) - (100vw - var(--caja)) / 2 - 28px);
   position: relative; overflow: hidden; margin-top: -97px; padding-top: 97px;
   min-height: calc(97px + 36px + var(--plato) * 0.868);
   display: flex; flex-direction: column; justify-content: flex-end;
-  background: linear-gradient(to bottom, var(--crema) 0, var(--crema) 16%, #f8ebda 58%, #f6e5d1 100%); }
+  background: linear-gradient(to bottom, var(--crema) 0, var(--crema) 16%, var(--portada-medio) 58%, var(--portada-fondo) 100%); }
 .portada-escena { position: absolute; top: 0; bottom: 0; left: 50%; width: min(1320px, 100%); transform: translateX(-50%); pointer-events: none; }
-.portada-plato { position: absolute; right: clamp(20px, 5%, 70px); bottom: 0; width: var(--plato); height: auto; transform: translateY(18%); }
+.portada-plato { position: absolute; right: var(--margen-plato); bottom: 0; width: var(--plato); height: auto; transform: translateY(18%); }
 /* Las flores (izquierda) y los utensilios (derecha) van pegados a las orillas y desenfocados, como en primer plano */
 .portada-flores { position: absolute; left: 0; bottom: 0; height: 80%; width: auto; filter: blur(3px); pointer-events: none; }
 .portada-utensilios { position: absolute; right: 0; bottom: 0; height: 76%; width: auto; filter: blur(3px); pointer-events: none; display: none; }
 @media (min-width: 1500px) { .portada-utensilios { display: block; } }
 .portada-contenido { position: relative; z-index: 1; display: flex; align-items: flex-end; }
-.portada-texto { padding: 24px 0 64px clamp(0px, 15%, 190px); max-width: 640px; }
+.portada-texto { padding: 24px 0 64px clamp(0px, 15%, 190px); max-width: min(640px, var(--texto-max)); }
 .portada h1 { font-size: clamp(2.1rem, 3.5vw, 2.9rem); margin-bottom: 0.4em; }
 .portada p.entrada { font-size: 1.06rem; max-width: 430px; color: var(--texto); }
 .portada .raya { width: 36px; height: 2px; background: var(--coral); margin: 4px 0 22px; border: 0; }
@@ -216,7 +227,7 @@ textarea { min-height: 96px; resize: vertical; }
   .portada-escena { left: 0; width: 100%; transform: none; }
   .portada-plato { right: -26%; bottom: -12%; width: 92vw; transform: none; filter: blur(2.5px); }
   .portada-flores { height: 70%; transform: translateX(-38%); }
-  .portada-texto { padding: 30px 4px 40px; }
+  .portada-texto { padding: 30px 4px 40px; max-width: none; }
 }
 
 /* Categorías en mosaico de fotos, con nombre y una línea */
@@ -331,3 +342,18 @@ textarea { min-height: 96px; resize: vertical; }
 .filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .miniatura { width: 56px; height: 56px; border-radius: var(--radio-chico); object-fit: cover; background: var(--linea); }
 .dia { border-left: 4px solid var(--coral); }
+
+/* Paletas para comparar (/?paleta=flores, /?paleta=durazno; /?paleta= vuelve a la lavanda) */
+html[data-paleta="flores"] {
+  /* el durazno coral de las flores (OKLCH h 45) en barra y pie, con texto vino (5.9:1) */
+  --franja-fondo: #f5bca2; --franja-texto: #752a32;
+  --pie-fondo: #f5bca2; --pie-texto: #752a32; --pie-linea: rgba(117, 42, 50, 0.28);
+  --pie-logo-claro: none; --pie-logo-color: block;
+  --panel: #feece4; --portada-medio: #fdeae1; --portada-fondo: #fee5db; --rotulo: #aa403b;
+}
+html[data-paleta="durazno"] {
+  --franja-fondo: #bf5351; --franja-texto: #ffffff;
+  --pie-fondo: #bf5351; --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.35);
+  --pie-logo-claro: block; --pie-logo-color: none;
+  --panel: #fbe8d8; --portada-medio: #f8ebda; --portada-fondo: #f6e5d1; --rotulo: #aa403b;
+}

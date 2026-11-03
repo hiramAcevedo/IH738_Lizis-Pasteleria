@@ -76,7 +76,8 @@ async function salir() {
       <div class="contenedor">
         <div class="columnas">
           <div class="pila">
-            <img class="logo-pie" src="/marca/logo-lizis-blanco.png" alt="Lizis Pastelería" width="440" height="600">
+            <img class="logo-pie claro" src="/marca/logo-lizis-blanco.png" alt="Lizis Pastelería" width="440" height="600">
+            <img class="logo-pie color" src="/marca/logo-lizis-coral.png" alt="Lizis Pastelería" width="440" height="600">
             <p style="margin: 0">Repostería artesanal hecha a mano en Guadalajara, Jalisco.</p>
           </div>
           <div>

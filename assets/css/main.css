@@ -1,37 +1,34 @@
-/* Lizis Pastelería · la maqueta que eligió el equipo (mantequilla y durazno), con la portada larga de la propuesta 1.
-   Colores medidos en la maqueta: fondo #fcf4e4, paneles #fbe8d8, títulos #752a32, cuerpo #5f544b, botón #be524c y
-   barra y pie en coral (un paso más oscuro que en la maqueta, en OKLCH y con el mismo tono, para que el texto blanco
-   llegue a 4.5:1). Script y contrastes en Proceso/paleta/paleta_maqueta3.py de la actividad 4.2.
-   Lora para los títulos y Jost para la interfaz; una sola familia de esquinas. */
+/* Lizis Pastelería · la maqueta que eligió el equipo, con los colores de las flores de la portada: crema de fondo,
+   durazno coral en barra, pie y botones, títulos en el coral profundo y rótulos en la lavanda de las espigas.
+   Script y contrastes en Proceso/paleta/ de la actividad 4.2. Lora para los títulos y Jost para la interfaz. */
 
 :root {
+  /* Paleta de las flores de la portada (OKLCH): el durazno coral de las flores (h 45) para barra, pie, botones y
+     títulos, y la lavanda de sus espigas (h 319) para los rótulos. Contrastes WCAG medidos sobre el crema. */
   --crema: #fcf4e4;              /* fondo de la página */
   --crema-claro: #fef8ee;
   --blanco: #ffffff;
-  --durazno: #faccb2;
-  --coral: #be524c;              /* botones y acentos (4.3:1 en texto grande) */
-  --coral-oscuro: #a63c38;       /* botón al pasar el cursor */
-  --coral-fuerte: #bf5351;       /* barra de aviso y pie, con texto blanco (4.6:1) */
-  --terracota: #be524c;          /* alias del acento para las páginas que ya lo usan */
-  --terracota-oscuro: #aa403b;   /* acento en texto chico y enlaces (5.5:1) */
-  --titulo: #752a32;             /* vino de los títulos y del logo (9:1) */
-  --cafe: #752a32;
-  --cafe-oscuro: #5a1e25;
-  --texto: #5f544b;              /* cuerpo (6.7:1) */
-  --suave: #6e6258;              /* texto secundario */
+  --panel: #feece4;              /* paneles en el durazno muy pálido de las flores */
+  --coral: #b55334;              /* botones, con texto blanco (4.9:1) */
+  --coral-oscuro: #9f4229;       /* botón al pasar el cursor */
+  --coral-fuerte: #a86247;       /* barra de aviso y pie, con texto blanco (4.7:1) */
+  --terracota: #b55334;
+  --terracota-oscuro: #a6482f;   /* enlaces y acento en texto chico (5.4:1) */
+  --titulo: #6f3421;             /* títulos y logo (8.8:1) */
+  --cafe: #6f3421;
+  --cafe-oscuro: #55271a;
+  --texto: #54443d;              /* cuerpo (8.5:1) */
+  --suave: #6b5a52;              /* texto secundario */
+  --rotulo: #7b4f87;             /* rótulos en la lavanda de las flores (5.8:1) */
   --linea: #ecdcc8;
   --borde-campo: #b0938a;
   --sobre-oscuro: #ffffff;
   --sobre-oscuro-suave: #ffffff;
   --fondo-tarjeta: #fef8ee;
-  /* Lo que cambia entre paletas. Por defecto, la lavanda medida en el plato (OKLCH h 298): barra y pie en lavanda
-     profunda #4c4066 con texto blanco (9.4:1), paneles y fondo de la portada en lavanda muy pálida, rótulos #635385 (6.2:1) */
-  --franja-fondo: #4c4066; --franja-texto: #ffffff;
-  --pie-fondo: #4c4066; --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.3);
+  --franja-fondo: #a86247; --franja-texto: #ffffff;
+  --pie-fondo: #a86247; --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.32);
   --pie-logo-claro: block; --pie-logo-color: none;
-  --panel: #f1eefa;
-  --portada-medio: #f5edf4; --portada-fondo: #f2eaf4;
-  --rotulo: #635385;
+  --portada-medio: #fdeae1; --portada-fondo: #fee5db;
   --exito: #13602e;
   --aviso: #6c4700;
   --peligro: #813330;
@@ -39,7 +36,7 @@
   --radio: 14px;
   --radio-control: 10px;
   --radio-chico: 6px;
-  --sombra: 0 1px 2px rgba(95, 84, 75, 0.06), 0 10px 28px rgba(95, 84, 75, 0.1);
+  --sombra: 0 1px 2px rgba(84, 68, 61, 0.06), 0 10px 28px rgba(84, 68, 61, 0.1);
   --marca: 'Lora', Georgia, serif;
   --ui: 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
@@ -118,7 +115,7 @@ input, select, textarea {
   width: 100%; padding: 11px 14px; border: 1px solid var(--borde-campo); border-radius: var(--radio-control);
   background: var(--blanco); color: var(--texto); font: 400 1rem var(--ui);
 }
-input:focus, select:focus, textarea:focus { outline: 2px solid rgba(190, 82, 76, 0.3); border-color: var(--coral); }
+input:focus, select:focus, textarea:focus { outline: 2px solid rgba(181, 83, 52, 0.3); border-color: var(--coral); }
 textarea { min-height: 96px; resize: vertical; }
 .opciones { display: flex; flex-wrap: wrap; gap: 8px; }
 .opcion {
@@ -243,10 +240,10 @@ textarea { min-height: 96px; resize: vertical; }
 
 /* Pasos para pedir, dentro de un panel durazno */
 .panel-pasos { display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center; }
-@media (min-width: 900px) { .panel-pasos { grid-template-columns: 0.9fr 2.1fr; } .panel-pasos > div:first-child { border-right: 1px solid rgba(117, 42, 50, 0.25); padding-right: 24px; } }
+@media (min-width: 900px) { .panel-pasos { grid-template-columns: 0.9fr 2.1fr; } .panel-pasos > div:first-child { border-right: 1px solid rgba(111, 52, 33, 0.22); padding-right: 24px; } }
 .panel-pasos h2 { margin: 0; }
 .pasos { display: grid; gap: 20px; grid-template-columns: 1fr; }
-@media (min-width: 700px) { .pasos { grid-template-columns: repeat(3, 1fr); gap: 0; } .paso + .paso { border-left: 1px solid rgba(117, 42, 50, 0.25); } .paso { padding: 0 22px; } }
+@media (min-width: 700px) { .pasos { grid-template-columns: repeat(3, 1fr); gap: 0; } .paso + .paso { border-left: 1px solid rgba(111, 52, 33, 0.22); } .paso { padding: 0 22px; } }
 .paso { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: start; }
 .paso svg { width: 30px; height: 30px; color: var(--coral); grid-row: span 2; margin-top: 2px; }
 .paso h3 { margin: 0; font-size: 1.1rem; line-height: 1.25; }
@@ -265,7 +262,7 @@ textarea { min-height: 96px; resize: vertical; }
 
 /* Nuestra historia: texto, tres fotos y la cita, en tres columnas */
 .historia { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: center; }
-@media (min-width: 960px) { .historia { grid-template-columns: 1.1fr 1.2fr 0.8fr; } .historia > div:first-child { border-right: 1px solid rgba(117, 42, 50, 0.25); padding-right: 28px; } }
+@media (min-width: 960px) { .historia { grid-template-columns: 1.1fr 1.2fr 0.8fr; } .historia > div:first-child { border-right: 1px solid rgba(111, 52, 33, 0.22); padding-right: 28px; } }
 .historia h2 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); }
 .historia p { font-size: 0.95rem; }
 .galeria-historia { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -342,18 +339,3 @@ textarea { min-height: 96px; resize: vertical; }
 .filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .miniatura { width: 56px; height: 56px; border-radius: var(--radio-chico); object-fit: cover; background: var(--linea); }
 .dia { border-left: 4px solid var(--coral); }
-
-/* Paletas para comparar (/?paleta=flores, /?paleta=durazno; /?paleta= vuelve a la lavanda) */
-html[data-paleta="flores"] {
-  /* el durazno coral de las flores (OKLCH h 45) en barra y pie, con texto vino (5.9:1) */
-  --franja-fondo: #f5bca2; --franja-texto: #752a32;
-  --pie-fondo: #f5bca2; --pie-texto: #752a32; --pie-linea: rgba(117, 42, 50, 0.28);
-  --pie-logo-claro: none; --pie-logo-color: block;
-  --panel: #feece4; --portada-medio: #fdeae1; --portada-fondo: #fee5db; --rotulo: #aa403b;
-}
-html[data-paleta="durazno"] {
-  --franja-fondo: #bf5351; --franja-texto: #ffffff;
-  --pie-fondo: #bf5351; --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.35);
-  --pie-logo-claro: block; --pie-logo-color: none;
-  --panel: #fbe8d8; --portada-medio: #f8ebda; --portada-fondo: #f6e5d1; --rotulo: #aa403b;
-}

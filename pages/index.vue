@@ -28,6 +28,7 @@ useHead({ title: 'Lizis Pastelería · Repostería artesanal en Guadalajara' })
 <template>
   <div>
     <section class="portada">
+      <img class="portada-flores" src="/fotos/portada-flores.jpg" alt="" aria-hidden="true" width="300" height="1024">
       <div class="portada-texto">
         <span class="rotulo">Repostería artesanal · Guadalajara</span>
         <h1>Roles de canela, brownies y pasteles hechos <em>a mano</em></h1>
@@ -43,7 +44,7 @@ useHead({ title: 'Lizis Pastelería · Repostería artesanal en Guadalajara' })
         </ul>
       </div>
       <div class="portada-foto">
-        <img class="principal" src="/fotos/rol-glaseado.jpg" alt="Roles de canela con glaseado de queso crema y canela espolvoreada" width="870" height="1088">
+        <img class="portada-plato" src="/fotos/portada-plato.jpg" alt="Plato de roles de canela glaseados con canela espolvoreada y una ramita de lavanda" width="976" height="1024">
       </div>
     </section>
 

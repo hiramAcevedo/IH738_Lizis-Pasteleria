@@ -184,27 +184,25 @@ textarea { min-height: 96px; resize: vertical; }
 .pie .base { border-top: 1px solid rgba(132, 37, 38, 0.25); margin-top: 32px; padding-top: 16px; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .prueba { display: inline-block; padding: 6px 16px; border-radius: var(--radio-control); border: 1px solid var(--cafe); color: var(--cafe); font-size: 0.82rem; }
 
-/* Portada larga: el texto a la izquierda y la foto a todo lo alto hasta el borde derecho. En escritorio sube por detrás
-   del encabezado (97 px) y se difumina hacia el menú, el logo y el texto en lugar de cortarse en seco. */
-.portada { display: grid; grid-template-columns: 1fr; background: var(--crema); }
-@media (min-width: 900px) { .portada { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); min-height: clamp(520px, 46vw, 680px); margin-top: -97px; } }
-.portada-texto { padding: 44px 16px 52px; align-self: center; }
+/* Portada larga: el texto a la izquierda y el plato completo a la derecha, sobre el mismo mantequilla de la página.
+   En escritorio la portada sube por detrás del encabezado (97 px) y, como el fondo es liso, se funde con él sin corte;
+   el plato empieza debajo del menú y nunca se recorta. Las flores asoman en la orilla izquierda. */
+.portada { position: relative; display: grid; grid-template-columns: 1fr; background: var(--crema); overflow: hidden; }
+@media (min-width: 900px) { .portada { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: clamp(560px, 48vw, 720px); margin-top: -97px; } }
+.portada-flores { display: none; }
+@media (min-width: 1100px) { .portada-flores { display: block; position: absolute; left: 0; top: 97px; height: calc(100% - 97px); width: auto; max-width: none; pointer-events: none; } }
+/* Donde el margen izquierdo es angosto, las flores sólo asoman para no quedar detrás del titular */
+@media (min-width: 1100px) and (max-width: 1379px) { .portada-flores { transform: translateX(-48%); } }
+.portada-texto { position: relative; z-index: 1; padding: 44px 16px 36px; align-self: center; }
 @media (min-width: 900px) { .portada-texto { padding: 153px 40px 64px max(16px, calc((100vw - 1180px) / 2)); } }
 .portada h1 { font-size: clamp(2.2rem, 4vw, 3.35rem); margin-bottom: 0.4em; max-width: 560px; }
 .portada p.entrada { font-size: 1.12rem; max-width: 470px; }
 .portada .datos { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 24px; padding: 0; list-style: none; color: var(--suave); font-size: 0.9rem; }
 .portada .datos li::before { content: '·'; color: var(--terracota); margin-right: 8px; font-weight: 700; }
-.portada-foto { position: relative; min-height: 340px; }
-.portada-foto .principal { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 22%);
-  mask-image: linear-gradient(to bottom, transparent 0, #000 22%); }
+.portada-plato { width: 100%; height: auto; }
 @media (min-width: 900px) {
-  .portada-foto .principal {
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 26%), linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, 0.35) 12%, #000 34%);
-    -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(to right, transparent 0, #000 26%), linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, 0.35) 12%, #000 34%);
-    mask-composite: intersect;
-  }
+  .portada-foto { position: static; }
+  .portada-plato { position: absolute; right: 0; top: 97px; height: calc(100% - 97px); width: auto; max-width: 58%; object-fit: contain; object-position: right center; }
 }
 
 /* Categorías en mosaico de fotos */

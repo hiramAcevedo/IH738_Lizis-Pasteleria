@@ -12,7 +12,8 @@ async function salir() {
 <template>
   <div class="panel">
     <aside class="lateral">
-      <NuxtLink to="/admin" class="logo"><b>Lizis</b><span>Administración</span></NuxtLink>
+      <NuxtLink to="/admin" class="logo" aria-label="Administración de Lizis Pastelería"><img src="/marca/logo-lizis-blanco.png" alt="Lizis Pastelería" width="440" height="600"></NuxtLink>
+      <div class="papel">Administración</div>
       <nav>
         <NuxtLink to="/admin">Resumen</NuxtLink>
         <NuxtLink to="/admin/pedidos">Pedidos</NuxtLink>

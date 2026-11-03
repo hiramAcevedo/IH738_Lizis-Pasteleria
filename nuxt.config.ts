@@ -14,10 +14,11 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Roles de canela, brownies, galletas, tartaletas y pasteles personalizados en Guadalajara, con pedido y pago en línea.' }
       ],
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', href: '/marca/icono.png' },
+        { rel: 'apple-touch-icon', href: '/marca/icono.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap' }
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600&display=swap' }
       ]
     }
   },

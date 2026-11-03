@@ -129,7 +129,7 @@ useHead({ title: 'Productos · Administración Lizis' })
         <thead><tr><th>Producto</th><th>Categoría</th><th>Opciones</th><th class="num">Precio</th><th>En la tienda</th><th /></tr></thead>
         <tbody>
           <tr v-for="p in data?.productos" :key="p.id" :style="p.visible ? '' : 'opacity: 0.55'">
-            <td><div class="fila" style="flex-wrap: nowrap"><img :src="p.imagen_url || '/favicon.svg'" alt="" class="miniatura"><b>{{ p.nombre }}</b></div></td>
+            <td><div class="fila" style="flex-wrap: nowrap"><img :src="p.imagen_url || '/marca/icono.png'" alt="" class="miniatura"><b>{{ p.nombre }}</b></div></td>
             <td>{{ p.categorias?.nombre }}</td>
             <td class="suave chico">{{ p.variantes.map((v: any) => v.nombre).join(', ') || 'Sin opciones' }}</td>
             <td class="num">{{ dinero(p.precio) }}</td>

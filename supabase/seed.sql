@@ -12,12 +12,13 @@ insert into public.categorias (nombre, slug, descripcion, orden) values
 with p as (
   insert into public.productos (categoria_id, nombre, slug, descripcion, ingredientes, alergenos, precio, imagen_url, destacado)
   select c.id, v.nombre, v.slug, v.descripcion, v.ingredientes, v.alergenos, v.precio,
-         'https://images.unsplash.com/photo-' || v.foto || '?w=900&q=75&auto=format&fit=crop', v.destacado
+         -- las fotos reales de Lizis viven en public/fotos/; las demás son de Unsplash (licencia libre)
+         case when v.foto like '/%' then v.foto else 'https://images.unsplash.com/photo-' || v.foto || '?w=900&q=75&auto=format&fit=crop' end, v.destacado
   from (values
     ('roles-de-canela', 'Rol de canela clásico', 'rol-de-canela-clasico',
      'El rol de la casa: masa suave enrollada con canela y azúcar morena, cubierto de glaseado.',
      'Harina de trigo, mantequilla, leche, huevo, azúcar morena, canela, levadura, azúcar glass.', 'Gluten, lácteos, huevo.',
-     45.00, '1686207855146-c3ffe2166d40', true),
+     45.00, '/fotos/rol-glaseado.jpg', true),
     ('roles-de-canela', 'Rol de canela con nuez', 'rol-de-canela-con-nuez',
      'El clásico con nuez picada en el relleno y encima del glaseado.',
      'Harina de trigo, mantequilla, leche, huevo, azúcar morena, canela, nuez, levadura, azúcar glass.', 'Gluten, lácteos, huevo, nuez.',
@@ -25,11 +26,11 @@ with p as (
     ('brownies', 'Brownie clásico', 'brownie-clasico',
      'Brownie de chocolate semiamargo, con costra delgada y centro húmedo.',
      'Chocolate semiamargo, mantequilla, azúcar, huevo, harina de trigo, cocoa.', 'Gluten, lácteos, huevo.',
-     35.00, '1777647364657-2319b02095de', true),
+     35.00, '/fotos/brownies-charola.jpg', true),
     ('brownies', 'Brownie con nuez', 'brownie-con-nuez',
      'El brownie clásico con trozos de nuez tostada.',
      'Chocolate semiamargo, mantequilla, azúcar, huevo, harina de trigo, cocoa, nuez.', 'Gluten, lácteos, huevo, nuez.',
-     40.00, '1636743715220-d8f8dd900b87', false),
+     40.00, '/fotos/brownies-fresa-nuez.jpg', false),
     ('galletas', 'Galleta con chispas de chocolate', 'galleta-chispas-de-chocolate',
      'Galleta grande, dorada por fuera y suave por dentro, con chispas de chocolate.',
      'Harina de trigo, mantequilla, azúcar morena, huevo, chispas de chocolate, vainilla.', 'Gluten, lácteos, huevo.',
@@ -38,10 +39,10 @@ with p as (
      'Galleta de avena con canela y un toque de piloncillo.',
      'Avena, harina de trigo, mantequilla, piloncillo, huevo, canela.', 'Gluten, lácteos, huevo.',
      22.00, '1600147573971-a2135dbff47e', false),
-    ('tartaletas', 'Tartaleta de frutos rojos', 'tartaleta-de-frutos-rojos',
-     'Base de mantequilla, crema pastelera y fresas, zarzamoras y moras azules.',
-     'Harina de trigo, mantequilla, leche, huevo, azúcar, fresa, zarzamora, mora azul.', 'Gluten, lácteos, huevo.',
-     55.00, '1620980776848-84ac10194945', true),
+    ('tartaletas', 'Tartaleta de fruta', 'tartaleta-de-fruta',
+     'Base de mantequilla, crema pastelera, uva verde y mora azul.',
+     'Harina de trigo, mantequilla, leche, huevo, azúcar, uva verde, mora azul.', 'Gluten, lácteos, huevo.',
+     55.00, '/fotos/tartaletas.jpg', true),
     ('tartaletas', 'Tartaleta de limón', 'tartaleta-de-limon',
      'Base de mantequilla con crema de limón, ácida y dulce a la vez.',
      'Harina de trigo, mantequilla, huevo, azúcar, limón.', 'Gluten, lácteos, huevo.',

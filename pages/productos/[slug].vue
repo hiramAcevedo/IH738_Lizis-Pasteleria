@@ -56,7 +56,7 @@ useHead({ title: `${producto.value.nombre} · Lizis Pastelería` })
   <section v-if="producto" class="seccion contenedor">
     <p class="chico"><NuxtLink to="/productos">Productos</NuxtLink> / <NuxtLink :to="{ path: '/productos', query: { categoria: producto.categorias?.slug } }">{{ producto.categorias?.nombre }}</NuxtLink></p>
     <div class="dos">
-      <img :src="producto.imagen_url || '/favicon.svg'" :alt="producto.nombre" class="foto-detalle">
+      <img :src="producto.imagen_url || '/marca/icono.png'" :alt="producto.nombre" class="foto-detalle">
       <div class="pila">
         <h1>{{ producto.nombre }}</h1>
         <div class="precio-grande">{{ dinero(unitario) }}</div>
@@ -86,7 +86,7 @@ useHead({ title: `${producto.value.nombre} · Lizis Pastelería` })
     </div>
     <div v-if="relacionados?.length" style="margin-top: 40px">
       <h2>También de {{ producto.categorias?.nombre?.toLowerCase() }}</h2>
-      <div class="rejilla">
+      <div class="rejilla-productos">
         <ProductoCard v-for="r in relacionados" :key="r.id" :producto="r" />
       </div>
     </div>

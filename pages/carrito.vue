@@ -20,7 +20,7 @@ useHead({ title: 'Carrito · Lizis Pastelería' })
               <tr v-for="l in lineas" :key="l.clave">
                 <td>
                   <div class="fila" style="flex-wrap: nowrap">
-                    <img :src="l.imagen || '/favicon.svg'" :alt="l.nombre" class="miniatura">
+                    <img :src="l.imagen || '/marca/icono.png'" :alt="l.nombre" class="miniatura">
                     <div>
                       <NuxtLink :to="`/productos/${l.slug}`"><b>{{ l.nombre }}</b></NuxtLink>
                       <div class="suave chico">{{ l.variantes.map((v) => `${v.grupo}: ${v.nombre}`).join(' · ') }}</div>

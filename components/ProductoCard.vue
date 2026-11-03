@@ -4,15 +4,15 @@ defineProps<{ producto: { slug: string; nombre: string; precio: number; imagen_u
 </script>
 
 <template>
-  <article class="tarjeta producto">
-    <NuxtLink :to="`/productos/${producto.slug}`" class="cubre">
-      <img :src="producto.imagen_url || '/favicon.svg'" :alt="producto.nombre" loading="lazy">
+  <article class="producto">
+    <NuxtLink :to="`/productos/${producto.slug}`" class="cubre foto">
+      <img :src="producto.imagen_url || '/marca/icono.png'" :alt="producto.nombre" loading="lazy">
     </NuxtLink>
     <div class="cuerpo">
       <span v-if="producto.categorias" class="cat">{{ producto.categorias.nombre }}</span>
       <NuxtLink :to="`/productos/${producto.slug}`" class="cubre"><h3>{{ producto.nombre }}</h3></NuxtLink>
       <span class="precio">Desde {{ dinero(producto.precio) }}</span>
-      <NuxtLink :to="`/productos/${producto.slug}`" class="boton chico secundario">Ver opciones</NuxtLink>
+      <NuxtLink :to="`/productos/${producto.slug}`" class="ver">Ver opciones →</NuxtLink>
     </div>
   </article>
 </template>

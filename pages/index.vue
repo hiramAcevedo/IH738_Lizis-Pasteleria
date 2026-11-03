@@ -48,7 +48,8 @@ useHead({ title: 'Lizis Pastelería · Repostería artesanal en Guadalajara' })
     </section>
 
     <section class="seccion contenedor">
-      <div class="titulo-lineas"><h2>Elige por antojo</h2></div>
+      <span class="rotulo">El menú</span>
+      <div class="encabezado-seccion"><h2>Elige por antojo</h2></div>
       <div class="mosaico">
         <NuxtLink v-for="c in losas" :key="c.id" :to="{ path: '/productos', query: { categoria: c.slug } }" class="losa">
           <img :src="c.foto" :alt="c.nombre" loading="lazy">

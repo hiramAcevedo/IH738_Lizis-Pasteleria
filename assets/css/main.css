@@ -187,33 +187,36 @@ textarea { min-height: 96px; resize: vertical; }
 .prueba svg { width: 15px; height: 15px; }
 
 /* Portada en capas sobre la página: fondo, flores, plato y utensilios, cada uno por separado y con transparencia.
-   El fondo arranca en el crema de la página bajo la barra de navegación (transparente en el inicio) y se aclara hacia
-   abajo, donde la portada se corta en recto. El texto va arriba, cerca de la barra; el plato, completo de lado a lado,
-   sólo lo corta el borde inferior. Flores y utensilios van pegados a las orillas de la pantalla y desenfocados. */
-.portada { position: relative; overflow: hidden; margin-top: -97px; padding-top: 97px; min-height: 540px;
-  display: flex; flex-direction: column; justify-content: flex-start;
-  background: linear-gradient(to bottom, var(--crema) 0, #fef9f0 40%, #fffcf7 100%); }
+   El fondo arranca en el crema de la página bajo la barra de navegación (transparente en el inicio) y se entibia hacia
+   abajo, donde la portada se corta en recto. Texto y plato se miden desde ese corte inferior: el plato, completo de lado
+   a lado, asoma 82 % de su alto y el texto queda siempre a 64 px del corte, a la altura del plato en cualquier pantalla.
+   Flores y utensilios van pegados a las orillas de la pantalla y desenfocados. */
+.portada { --plato: clamp(340px, calc(min(1320px, 100vw) * 0.37), 490px);
+  position: relative; overflow: hidden; margin-top: -97px; padding-top: 97px;
+  min-height: calc(97px + 36px + var(--plato) * 0.868);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  background: linear-gradient(to bottom, var(--crema) 0, var(--crema) 16%, #f8ebda 58%, #f6e5d1 100%); }
 .portada-escena { position: absolute; top: 0; bottom: 0; left: 50%; width: min(1320px, 100%); transform: translateX(-50%); pointer-events: none; }
-.portada-plato { position: absolute; right: clamp(20px, 5%, 70px); bottom: 0; width: clamp(340px, 37%, 490px); height: auto; transform: translateY(26%); }
+.portada-plato { position: absolute; right: clamp(20px, 5%, 70px); bottom: 0; width: var(--plato); height: auto; transform: translateY(18%); }
 /* Las flores (izquierda) y los utensilios (derecha) van pegados a las orillas y desenfocados, como en primer plano */
-.portada-flores { position: absolute; left: 0; bottom: 0; height: 78%; width: auto; filter: blur(3px); pointer-events: none; }
-.portada-utensilios { position: absolute; right: 0; bottom: 0; height: 74%; width: auto; filter: blur(3px); pointer-events: none; display: none; }
+.portada-flores { position: absolute; left: 0; bottom: 0; height: 80%; width: auto; filter: blur(3px); pointer-events: none; }
+.portada-utensilios { position: absolute; right: 0; bottom: 0; height: 76%; width: auto; filter: blur(3px); pointer-events: none; display: none; }
 @media (min-width: 1500px) { .portada-utensilios { display: block; } }
-.portada-contenido { position: relative; z-index: 1; display: flex; align-items: flex-start; }
-.portada-texto { padding: 44px 0 64px clamp(0px, 15%, 190px); max-width: 640px; }
+.portada-contenido { position: relative; z-index: 1; display: flex; align-items: flex-end; }
+.portada-texto { padding: 24px 0 64px clamp(0px, 15%, 190px); max-width: 640px; }
 .portada h1 { font-size: clamp(2.1rem, 3.5vw, 2.9rem); margin-bottom: 0.4em; }
 .portada p.entrada { font-size: 1.06rem; max-width: 430px; color: var(--texto); }
 .portada .raya { width: 36px; height: 2px; background: var(--coral); margin: 4px 0 22px; border: 0; }
-@media (max-width: 1180px) { .portada-flores { height: 60%; transform: translateX(-30%); } .portada-texto { padding-left: clamp(0px, 9%, 110px); } }
+@media (max-width: 1180px) { .portada-flores { height: 62%; transform: translateX(-30%); } .portada-texto { padding-left: clamp(0px, 9%, 110px); } }
 @media (max-width: 760px) {
   /* En el celular todo se junta detrás del texto, sin una fila aparte: plato y flores desenfocados y un velo claro
      encima para que el texto se lea bien */
-  .portada { margin-top: -73px; padding-top: 73px; min-height: 0; }
-  .portada::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255, 252, 247, 0.5) 0, rgba(255, 252, 247, 0.72) 30%, rgba(255, 252, 247, 0.6) 100%); pointer-events: none; }
+  .portada { margin-top: -73px; padding-top: 73px; min-height: 0; justify-content: flex-start; }
+  .portada::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(252, 244, 228, 0.5) 0, rgba(252, 244, 228, 0.72) 30%, rgba(252, 244, 228, 0.6) 100%); pointer-events: none; }
   .portada-escena { left: 0; width: 100%; transform: none; }
   .portada-plato { right: -26%; bottom: -12%; width: 92vw; transform: none; filter: blur(2.5px); }
   .portada-flores { height: 70%; transform: translateX(-38%); }
-  .portada-texto { padding: 30px 4px 36px; }
+  .portada-texto { padding: 30px 4px 40px; }
 }
 
 /* Categorías en mosaico de fotos, con nombre y una línea */

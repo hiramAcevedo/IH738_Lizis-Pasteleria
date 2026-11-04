@@ -1,6 +1,7 @@
-/* Lizis Pastelería · página blanca, títulos en cacao, botones en café y paneles en color galleta. Lora para los títulos
-   y Jost para la interfaz. La barra de aviso, el pie y el logo cambian con la paleta (/?paleta=, composables/usePaleta.ts):
-   :root lleva la primera, Café, y las demás sólo redefinen lo que las distingue. */
+/* Lizis Pastelería · página blanca y paneles en color galleta, Lora para los títulos y Jost para la interfaz. La barra de
+   aviso, el pie, los botones, los títulos y el logo cambian con la paleta (/?paleta=, composables/usePaleta.ts):
+   la tienda abre con Coral, la que propone el equipo. :root lleva los valores de Café y cada paleta, también Coral,
+   redefine sólo lo que la distingue. */
 
 :root {
   --pagina: #ffffff;             /* fondo de la página y del encabezado, en todas las paletas */

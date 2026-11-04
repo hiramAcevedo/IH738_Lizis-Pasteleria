@@ -19,6 +19,7 @@ useHead({ title: 'Paletas · Lizis Pastelería', meta: [{ name: 'robots', conten
           <span v-for="c in p.muestras" :key="c" :style="{ background: c }" />
         </div>
         <h3>{{ p.nombre }}</h3>
+        <span v-if="p.id === PALETAS[0].id" class="rotulo" style="margin: 0">La que propone el equipo</span>
         <p class="suave">{{ p.detalle }}</p>
         <div class="fila">
           <button v-if="p.id !== paleta.id" class="boton chico" @click="elegir(p.id)">Usar esta</button>

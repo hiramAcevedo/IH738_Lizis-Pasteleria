@@ -1,18 +1,17 @@
-/* Lizis Pastelería · la maqueta que eligió el equipo con la paleta de las flores de la portada: crema de fondo, durazno
-   de las flores en la barra y el pie con texto blanco, títulos en vino, botones en coral y paneles en color galleta.
-   Lora para los títulos y Jost para la interfaz. */
+/* Lizis Pastelería · la maqueta que eligió el equipo: fondo blanco, barra de aviso y pie en coral con texto blanco,
+   títulos en vino, botones en coral y paneles en color galleta. Lora para los títulos y Jost para la interfaz. */
 
 :root {
-  /* La paleta de las flores que eligió el equipo: crema de fondo, el durazno de las flores (#f5bca2) en la barra de aviso
-     y el pie con texto blanco, títulos en vino, botones en coral y paneles en color galleta. Sin acentos morados. */
-  --crema: #fcf4e4;              /* fondo de la página */
+  /* Fondo blanco en toda la página; la barra de aviso y el pie en el coral de los botones con texto blanco sin sombra
+     (4.7:1), títulos en vino y paneles en color galleta. Sin acentos morados. */
+  --pagina: #ffffff;             /* fondo de la página y del encabezado */
+  --crema: #fcf4e4;
   --crema-claro: #fef8ee;
   --blanco: #ffffff;
   --panel: #f6e3c9;              /* paneles («Tu pedido en tres pasos», «Crea el tuyo») en color galleta */
-  --coral: #be524c;              /* botones, con texto blanco (4.7:1) */
+  --coral: #be514c;              /* botones, barra de aviso y pie, con texto blanco (4.7:1) */
   --coral-oscuro: #a63c38;       /* botón al pasar el cursor */
-  --coral-fuerte: #f5bca2;       /* el durazno de las flores, en barra y pie */
-  --terracota: #be524c;
+  --terracota: #be514c;
   --terracota-oscuro: #aa403b;   /* enlaces y acento en texto chico (5.5:1) */
   --titulo: #752a32;             /* títulos y logo (9:1) */
   --cafe: #752a32;
@@ -25,11 +24,9 @@
   --sobre-oscuro: #ffffff;
   --sobre-oscuro-suave: #ffffff;
   --fondo-tarjeta: #fef8ee;
-  --franja-fondo: #f5bca2; --franja-texto: #ffffff;
-  --pie-fondo: #f5bca2; --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.6);
+  --franja-fondo: var(--coral); --franja-texto: #ffffff;
+  --pie-fondo: var(--coral); --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.35);
   --pie-logo-claro: block; --pie-logo-color: none;
-  /* el blanco sobre el durazno queda en 1.7:1: una sombra muy suave en el tono vino le da cuerpo para leerse */
-  --sombra-texto-claro: 0 1px 2px rgba(117, 42, 50, 0.45), 0 0 1px rgba(117, 42, 50, 0.35);
   --portada-medio: #fdeae1; --portada-fondo: #fee5db;
   --exito: #13602e;
   --aviso: #6c4700;
@@ -48,7 +45,7 @@
 html, body { margin: 0; }
 
 body {
-  background: var(--crema);
+  background: var(--pagina);
   color: var(--texto);
   font-family: var(--ui);
   font-size: 16.5px;
@@ -139,11 +136,11 @@ textarea { min-height: 96px; resize: vertical; }
 @media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 0.9fr; } }
 
 /* Barra de aviso en coral */
-.franja { background: var(--franja-fondo); color: var(--franja-texto); text-shadow: var(--sombra-texto-claro); font: 500 0.82rem var(--ui); letter-spacing: 0.04em; text-align: center; padding: 8px 16px; }
+.franja { background: var(--franja-fondo); color: var(--franja-texto); font: 500 0.82rem var(--ui); letter-spacing: 0.04em; text-align: center; padding: 8px 16px; }
 .franja b { font-weight: 500; }
 
 /* Encabezado: menú en mayúsculas a los lados y el logo al centro */
-.barra { background: var(--crema); border-bottom: 1px solid var(--linea); position: sticky; top: 0; z-index: 20; }
+.barra { background: var(--pagina); border-bottom: 1px solid var(--linea); position: sticky; top: 0; z-index: 20; }
 /* En el inicio, arriba, el encabezado deja ver la capa de la portada que se difumina hacia él */
 .barra.sobre-portada { background: transparent; border-bottom-color: transparent; }
 .barra .contenedor { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; min-height: 96px; }
@@ -176,10 +173,10 @@ textarea { min-height: 96px; resize: vertical; }
 }
 
 /* Pie en coral, como la barra de aviso */
-.pie { background: var(--pie-fondo); color: var(--pie-texto); text-shadow: var(--sombra-texto-claro); font-weight: 500; padding: 44px 0 22px; font-size: 0.92rem; }
+.pie { background: var(--pie-fondo); color: var(--pie-texto); padding: 44px 0 22px; font-size: 0.92rem; }
 .pie .columnas { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 860px) { .pie .columnas { grid-template-columns: 1.3fr 1fr 1fr 1fr; } .pie .columnas > div + div { border-left: 1px solid var(--pie-linea); padding-left: 28px; } }
-.pie img.logo-pie { height: 84px; width: auto; filter: drop-shadow(0 1px 2px rgba(117, 42, 50, 0.35)); }
+.pie img.logo-pie { height: 84px; width: auto; }
 .pie img.logo-pie.claro { display: var(--pie-logo-claro); }
 .pie img.logo-pie.color { display: var(--pie-logo-color); }
 .pie h4 { font: 500 0.76rem var(--ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--pie-texto); margin: 4px 0 12px; }
@@ -195,7 +192,7 @@ textarea { min-height: 96px; resize: vertical; }
 .prueba svg { width: 15px; height: 15px; }
 
 /* Portada en capas sobre la página: fondo, flores, plato y utensilios, cada uno por separado y con transparencia.
-   El fondo arranca en el crema de la página bajo la barra de navegación (transparente en el inicio) y se entibia hacia
+   El fondo arranca en el blanco de la página bajo la barra de navegación (transparente en el inicio) y se entibia hacia
    abajo, donde la portada se corta en recto. Texto y plato se miden desde ese corte inferior: el plato, completo de lado
    a lado, asoma 82 % de su alto y el texto queda siempre a 64 px del corte, a la altura del plato en cualquier pantalla.
    Flores y utensilios van pegados a las orillas de la pantalla y desenfocados. */
@@ -205,7 +202,7 @@ textarea { min-height: 96px; resize: vertical; }
   position: relative; overflow: hidden; margin-top: -97px; padding-top: 97px;
   min-height: calc(97px + 36px + var(--plato) * 0.868);
   display: flex; flex-direction: column; justify-content: flex-end;
-  background: linear-gradient(to bottom, var(--crema) 0, var(--crema) 16%, var(--portada-medio) 58%, var(--portada-fondo) 100%); }
+  background: linear-gradient(to bottom, var(--pagina) 0, var(--pagina) 16%, var(--portada-medio) 58%, var(--portada-fondo) 100%); }
 .portada-escena { position: absolute; top: 0; bottom: 0; left: 50%; width: min(1320px, 100%); transform: translateX(-50%); pointer-events: none; }
 .portada-plato { position: absolute; right: var(--margen-plato); bottom: 0; width: var(--plato); height: auto; transform: translateY(18%); }
 /* Las flores (izquierda) y los utensilios (derecha) van pegados a las orillas y desenfocados, como en primer plano */
@@ -222,7 +219,7 @@ textarea { min-height: 96px; resize: vertical; }
   /* En el celular todo se junta detrás del texto, sin una fila aparte: plato y flores desenfocados y un velo claro
      encima para que el texto se lea bien */
   .portada { margin-top: -73px; padding-top: 73px; min-height: 0; justify-content: flex-start; }
-  .portada::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(252, 244, 228, 0.5) 0, rgba(252, 244, 228, 0.72) 30%, rgba(252, 244, 228, 0.6) 100%); pointer-events: none; }
+  .portada::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.72) 30%, rgba(255, 255, 255, 0.6) 100%); pointer-events: none; }
   .portada-escena { left: 0; width: 100%; transform: none; }
   .portada-plato { right: -26%; bottom: -12%; width: 92vw; transform: none; filter: blur(2.5px); }
   .portada-flores { height: 70%; transform: translateX(-38%); }

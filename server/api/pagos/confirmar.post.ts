@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   const { folio, session_id } = await readBody<{ folio?: string; session_id?: string }>(event)
   if (!folio || !session_id) throw createError({ statusCode: 400, statusMessage: 'Faltan datos del pago' })
 
-  const supabase = await serverSupabaseClient(event)
+  const supabase = await serverSupabaseClient<any>(event)
   const { data: pedido } = await supabase.from('pedidos').select('folio, estado, usuario_id, total').eq('folio', folio).maybeSingle()
   if (!pedido || pedido.usuario_id !== usuario.sub) throw createError({ statusCode: 404, statusMessage: 'Pedido no encontrado' })
   if (pedido.estado !== 'pendiente_pago') return { estado: pedido.estado }

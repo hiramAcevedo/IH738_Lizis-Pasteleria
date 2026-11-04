@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   const { folio } = await readBody<{ folio?: string }>(event)
   if (!folio) throw createError({ statusCode: 400, statusMessage: 'Falta el folio del pedido' })
 
-  const supabase = await serverSupabaseClient(event)
+  const supabase = await serverSupabaseClient<any>(event)
   const { data: pedido } = await supabase
     .from('pedidos')
     .select('folio, estado, usuario_id, envio, total, pedido_items(nombre, detalle, precio_unitario, cantidad)')

@@ -8,17 +8,10 @@ export interface Paleta {
 }
 
 // Las combinaciones de color que se exploraron al implementar la tienda, para que la propietaria elija la definitiva.
-// La primera, Coral, es la que propone el equipo. Todas conservan la página blanca; cambian la barra de aviso, el pie,
+// La primera, Café, es la que propone el equipo: la más cercana a los mockups del diseño, con su mismo café en la barra,
+// el pie y los botones. Todas conservan la página blanca; cambian la barra de aviso, el pie,
 // el menú del panel, los botones, los títulos y el logo en todo el sitio. Los valores viven en main.css.
 export const PALETAS: Paleta[] = [
-  {
-    id: 'coral',
-    nombre: 'Coral',
-    detalle: 'Barra de aviso, pie, menú del panel y botones en coral; títulos en vino y paneles en galleta.',
-    muestras: ['#be514c', '#752a32', '#f6e3c9', '#ffffff'],
-    logo: '/marca/logo-lizis-coral.png',
-    logoPie: '/marca/logo-lizis-blanco.png',
-  },
   {
     id: 'cafe',
     nombre: 'Café',
@@ -42,6 +35,14 @@ export const PALETAS: Paleta[] = [
     muestras: ['#f6e3c9', '#542624', '#9a644b', '#ffffff'],
     logo: '/marca/logo-lizis.png',
     logoPie: '/marca/logo-lizis.png',
+  },
+  {
+    id: 'coral',
+    nombre: 'Coral',
+    detalle: 'Barra de aviso, pie, menú del panel y botones en coral; títulos en vino y paneles en galleta.',
+    muestras: ['#be514c', '#752a32', '#f6e3c9', '#ffffff'],
+    logo: '/marca/logo-lizis-coral.png',
+    logoPie: '/marca/logo-lizis-blanco.png',
   },
 ]
 

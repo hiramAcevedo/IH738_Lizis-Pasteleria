@@ -50,8 +50,8 @@ pnpm dev                # http://localhost:3738
 ```
 
 La base se arma con los archivos de `supabase/migrations/` en orden y el catálogo de prueba con `supabase/seed.sql`.
-Las fotos del catálogo de prueba son de Unsplash (licencia libre) y los precios son provisionales: los definitivos los
-carga la propietaria desde el panel.
+Las fotos del catálogo son de la pastelería en los productos que ya las tienen y de Unsplash (licencia libre) en los
+demás; los precios son provisionales: los definitivos, con sus fotos, los carga la propietaria desde el panel.
 
 ## Estructura
 

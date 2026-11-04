@@ -289,7 +289,10 @@ textarea { min-height: 96px; resize: vertical; }
 .producto .ver { margin-top: 6px; font-size: 0.88rem; font-weight: 500; color: var(--terracota-oscuro); text-decoration: none; }
 .producto .ver:hover { text-decoration: underline; }
 .producto a.cubre { text-decoration: none; color: inherit; }
-.foto-detalle { border-radius: var(--radio); width: 100%; aspect-ratio: 4 / 5; object-fit: cover; box-shadow: var(--sombra); }
+/* Detalle: la foto cuadrada y del mismo tamaño en todos los productos, con el texto al lado */
+.detalle { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 860px) { .detalle { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: 48px; } }
+.foto-detalle { width: 100%; max-width: 440px; aspect-ratio: 1; object-fit: cover; border-radius: var(--radio); box-shadow: var(--sombra); background: var(--linea); }
 .precio-grande { font: 500 2rem var(--marca); color: var(--titulo); }
 .cantidad { display: inline-flex; align-items: center; border: 1px solid var(--borde-campo); border-radius: var(--radio-control); background: var(--blanco); }
 .cantidad button { width: 40px; height: 40px; border: 0; background: none; font-size: 1.2rem; cursor: pointer; color: var(--titulo); }

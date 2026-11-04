@@ -55,7 +55,7 @@ useHead({ title: `${producto.value.nombre} · Lizis Pastelería` })
 <template>
   <section v-if="producto" class="seccion contenedor">
     <p class="chico"><NuxtLink to="/productos">Productos</NuxtLink> / <NuxtLink :to="{ path: '/productos', query: { categoria: producto.categorias?.slug } }">{{ producto.categorias?.nombre }}</NuxtLink></p>
-    <div class="dos">
+    <div class="detalle">
       <img :src="producto.imagen_url || '/marca/icono.png'" :alt="producto.nombre" class="foto-detalle">
       <div class="pila">
         <h1>{{ producto.nombre }}</h1>

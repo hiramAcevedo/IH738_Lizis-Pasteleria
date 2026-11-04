@@ -24,10 +24,13 @@ export function fechaLarga(iso: string | null | undefined) {
   return new Intl.DateTimeFormat('es-MX', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(a, m - 1, d))
 }
 
+// Con hora es un instante (creado_el, pagado_el) y se lee en la hora de México; sin hora es un día del calendario.
 export function fechaCorta(iso: string | null | undefined) {
   if (!iso) return ''
-  const [a, m, d] = iso.slice(0, 10).split('-').map(Number)
-  return new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(a, m - 1, d))
+  const formato = { day: 'numeric', month: 'short', year: 'numeric' } as const
+  if (iso.length > 10) return new Intl.DateTimeFormat('es-MX', { ...formato, timeZone: 'America/Mexico_City' }).format(new Date(iso))
+  const [a, m, d] = iso.split('-').map(Number)
+  return new Intl.DateTimeFormat('es-MX', formato).format(new Date(a, m - 1, d))
 }
 
 export function fechaHora(iso: string | null | undefined) {

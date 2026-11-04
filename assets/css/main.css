@@ -123,6 +123,7 @@ textarea { min-height: 96px; resize: vertical; }
 }
 .opcion input { width: auto; margin: 0; accent-color: var(--coral); }
 .opcion.activa { border-color: var(--titulo); background: var(--titulo); color: var(--blanco); }
+.opcion.activa .suave { color: rgba(255, 255, 255, 0.82); }   /* el precio extra de la opción elegida, legible sobre el vino */
 .error { color: var(--peligro); font-size: 0.9rem; }
 
 /* Tarjetas, paneles y rejillas */

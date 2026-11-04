@@ -5,6 +5,7 @@ const supabase = useSupabaseClient()
 const usuario = useSupabaseUser()
 const { perfil, cargar, esAdmin } = usePerfil()
 const { piezas } = useCarrito()
+const { paleta } = usePaleta()
 const { data: ajustes } = await useAjustes()
 const abierto = ref(false)
 const route = useRoute()
@@ -46,7 +47,7 @@ async function salir() {
           <NuxtLink to="/pastel-personalizado">Pasteles personalizados</NuxtLink>
         </nav>
         <NuxtLink to="/" class="logo" aria-label="Lizis Pastelería, inicio">
-          <img src="/marca/logo-lizis-coral.png" alt="Lizis Pastelería" width="440" height="600">
+          <img :src="paleta.logo" alt="Lizis Pastelería" width="440" height="600">
         </NuxtLink>
         <nav class="menu derecha" aria-label="Cuenta">
           <NuxtLink v-if="esAdmin" to="/admin">Administración</NuxtLink>
@@ -76,8 +77,7 @@ async function salir() {
       <div class="contenedor">
         <div class="columnas">
           <div class="pila">
-            <img class="logo-pie claro" src="/marca/logo-lizis-blanco.png" alt="Lizis Pastelería" width="440" height="600">
-            <img class="logo-pie color" src="/marca/logo-lizis-coral.png" alt="Lizis Pastelería" width="440" height="600">
+            <img class="logo-pie" :src="paleta.logoPie" alt="Lizis Pastelería" width="440" height="600">
             <p style="margin: 0">Repostería artesanal hecha a mano en Guadalajara, Jalisco.</p>
           </div>
           <div>

@@ -1,33 +1,32 @@
-/* Lizis Pastelería · la maqueta que eligió el equipo: fondo blanco, barra de aviso y pie en coral con texto blanco,
-   títulos en vino, botones en coral y paneles en color galleta. Lora para los títulos y Jost para la interfaz. */
+/* Lizis Pastelería · página blanca, títulos en cacao, botones en café y paneles en color galleta. Lora para los títulos
+   y Jost para la interfaz. La barra de aviso, el pie y el logo cambian con la paleta (/?paleta=, composables/usePaleta.ts):
+   :root lleva la primera, Café, y las demás sólo redefinen lo que las distingue. */
 
 :root {
-  /* Fondo blanco en toda la página; la barra de aviso y el pie en el coral de los botones con texto blanco sin sombra
-     (4.7:1), títulos en vino y paneles en color galleta. Sin acentos morados. */
-  --pagina: #ffffff;             /* fondo de la página y del encabezado */
+  --pagina: #ffffff;             /* fondo de la página y del encabezado, en todas las paletas */
   --crema: #fcf4e4;
   --crema-claro: #fef8ee;
   --blanco: #ffffff;
   --panel: #f6e3c9;              /* paneles («Tu pedido en tres pasos», «Crea el tuyo») en color galleta */
-  --coral: #be514c;              /* botones, barra de aviso y pie, con texto blanco (4.7:1) */
-  --coral-oscuro: #a63c38;       /* botón al pasar el cursor */
-  --terracota: #be514c;
-  --terracota-oscuro: #aa403b;   /* enlaces y acento en texto chico (5.5:1) */
-  --titulo: #752a32;             /* títulos y logo (9:1) */
-  --cafe: #752a32;
-  --cafe-oscuro: #5a1e25;
+  --acento: #9a644b;             /* botones, barra de aviso y pie, con texto blanco (4.9:1) */
+  --acento-oscuro: #85543d;      /* botón al pasar el cursor */
+  --terracota: #a86c50;          /* el terracota del logo, en títulos grandes y adornos */
+  --terracota-oscuro: #85543d;   /* enlaces y acento en texto chico (6.3:1) */
+  --titulo: #542624;             /* títulos, el cacao del logo (12.5:1) */
+  --cafe: #542624;
+  --cafe-oscuro: #3c1514;
   --texto: #5f544b;              /* cuerpo (6.7:1) */
   --suave: #6e6258;              /* texto secundario */
-  --rotulo: #aa403b;             /* rótulos en coral */
+  --rotulo: #85543d;             /* rótulos en café */
   --linea: #ecdcc8;
   --borde-campo: #b0938a;
   --sobre-oscuro: #ffffff;
   --sobre-oscuro-suave: #ffffff;
   --fondo-tarjeta: #fef8ee;
-  --franja-fondo: var(--coral); --franja-texto: #ffffff;
-  --pie-fondo: var(--coral); --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.35);
-  --pie-logo-claro: block; --pie-logo-color: none;
-  --portada-medio: #fdeae1; --portada-fondo: #fee5db;
+  --franja-fondo: var(--acento); --franja-texto: #ffffff;
+  --pie-fondo: var(--acento); --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.35);
+  --lateral-texto: #f7efe4; --lateral-rotulo: #f3e6d6;   /* menú del panel sobre el color de los títulos (10:1) */
+  --portada-medio: #f9efe4; --portada-fondo: #f4e6d4;
   --exito: #13602e;
   --aviso: #6c4700;
   --peligro: #813330;
@@ -38,6 +37,27 @@
   --sombra: 0 1px 2px rgba(95, 84, 75, 0.06), 0 10px 28px rgba(95, 84, 75, 0.1);
   --marca: 'Lora', Georgia, serif;
   --ui: 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* Cacao: barra de aviso y pie en el cacao del logo con letras crema (11:1) */
+html[data-paleta="cacao"] {
+  --franja-fondo: #542624; --franja-texto: #f7f1e3;
+  --pie-fondo: #542624; --pie-texto: #f7f1e3; --pie-linea: rgba(247, 241, 227, 0.3);
+}
+
+/* Galleta: barra de aviso y pie en galleta con letras cacao (10:1) */
+html[data-paleta="galleta"] {
+  --franja-fondo: #f6e3c9; --franja-texto: #542624;
+  --pie-fondo: #f6e3c9; --pie-texto: #542624; --pie-linea: rgba(84, 38, 36, 0.2);
+}
+
+/* Coral: barra de aviso, pie y botones en coral con texto blanco (4.7:1) y títulos en vino */
+html[data-paleta="coral"] {
+  --acento: #be514c; --acento-oscuro: #a63c38;
+  --terracota: #be514c; --terracota-oscuro: #aa403b; --rotulo: #aa403b;
+  --titulo: #752a32; --cafe: #752a32; --cafe-oscuro: #5a1e25;
+  --lateral-texto: #f6e4dc; --lateral-rotulo: #f3d9cf;
+  --portada-medio: #fdeae1; --portada-fondo: #fee5db;
 }
 
 * { box-sizing: border-box; }
@@ -57,7 +77,7 @@ h1, h2, h3 { font-family: var(--marca); color: var(--titulo); line-height: 1.12;
 h1 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); }
 h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
 h3 { font-size: 1.25rem; }
-h1 em, h2 em { font-style: italic; color: var(--coral); }
+h1 em, h2 em { font-style: italic; color: var(--acento); }
 p { margin: 0 0 1em; }
 a { color: var(--terracota-oscuro); }
 img { max-width: 100%; display: block; }
@@ -86,18 +106,18 @@ img { max-width: 100%; display: block; }
 .titulo-lineas h2 em { font-style: normal; color: inherit; }
 
 /* Adorno con el pastel del logo, entre dos líneas */
-.adorno { display: flex; align-items: center; gap: 14px; color: var(--coral); margin: 6px 0 0; }
+.adorno { display: flex; align-items: center; gap: 14px; color: var(--acento); margin: 6px 0 0; }
 .adorno::before, .adorno::after { content: ''; height: 1px; width: 64px; background: currentColor; opacity: 0.6; }
 .adorno svg { width: 26px; height: 26px; }
 
 /* Botones */
 .boton {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 12px 26px; border-radius: var(--radio-control); border: 1px solid var(--coral);
-  background: var(--coral); color: var(--blanco); font: 500 0.95rem var(--ui); letter-spacing: 0.02em;
+  padding: 12px 26px; border-radius: var(--radio-control); border: 1px solid var(--acento);
+  background: var(--acento); color: var(--blanco); font: 500 0.95rem var(--ui); letter-spacing: 0.02em;
   text-decoration: none; cursor: pointer; transition: background 0.15s, color 0.15s, transform 0.05s;
 }
-.boton:hover { background: var(--coral-oscuro); border-color: var(--coral-oscuro); }
+.boton:hover { background: var(--acento-oscuro); border-color: var(--acento-oscuro); }
 .boton:active { transform: translateY(1px); }
 .boton:disabled { opacity: 0.55; cursor: not-allowed; }
 .boton.secundario { background: transparent; color: var(--titulo); border-color: var(--titulo); }
@@ -114,14 +134,14 @@ input, select, textarea {
   width: 100%; padding: 11px 14px; border: 1px solid var(--borde-campo); border-radius: var(--radio-control);
   background: var(--blanco); color: var(--texto); font: 400 1rem var(--ui);
 }
-input:focus, select:focus, textarea:focus { outline: 2px solid rgba(181, 83, 52, 0.3); border-color: var(--coral); }
+input:focus, select:focus, textarea:focus { outline: 2px solid color-mix(in srgb, var(--acento) 30%, transparent); border-color: var(--acento); }
 textarea { min-height: 96px; resize: vertical; }
 .opciones { display: flex; flex-wrap: wrap; gap: 8px; }
 .opcion {
   display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid var(--linea);
   border-radius: var(--radio-control); background: var(--blanco); cursor: pointer; font: 400 0.92rem var(--ui); color: var(--texto);
 }
-.opcion input { width: auto; margin: 0; accent-color: var(--coral); }
+.opcion input { width: auto; margin: 0; accent-color: var(--acento); }
 .opcion.activa { border-color: var(--titulo); background: var(--titulo); color: var(--blanco); }
 .opcion.activa .suave { color: rgba(255, 255, 255, 0.82); }   /* el precio extra de la opción elegida, legible sobre el vino */
 .error { color: var(--peligro); font-size: 0.9rem; }
@@ -136,7 +156,7 @@ textarea { min-height: 96px; resize: vertical; }
 .dos { display: grid; gap: 32px; grid-template-columns: 1fr; }
 @media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 0.9fr; } }
 
-/* Barra de aviso en coral */
+/* Barra de aviso, del color de la paleta */
 .franja { background: var(--franja-fondo); color: var(--franja-texto); font: 500 0.82rem var(--ui); letter-spacing: 0.04em; text-align: center; padding: 8px 16px; }
 .franja b { font-weight: 500; }
 
@@ -153,11 +173,11 @@ textarea { min-height: 96px; resize: vertical; }
   padding: 8px 10px; text-decoration: none; color: var(--titulo); font: 500 0.8rem var(--ui); letter-spacing: 0.14em; text-transform: uppercase;
   background: none; border: 0; cursor: pointer; border-radius: var(--radio-control);
 }
-.menu a:hover, .menu button.enlace:hover, .menu a.router-link-active { color: var(--coral); }
+.menu a:hover, .menu button.enlace:hover, .menu a.router-link-active { color: var(--acento); }
 .menu a.carrito { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--titulo); padding: 9px 18px; margin-left: 6px; }
 .menu a.carrito:hover { background: var(--titulo); color: var(--blanco); }
 .menu a.carrito svg { width: 17px; height: 17px; }
-.carrito-cuenta { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: var(--radio-chico); background: var(--coral); color: var(--blanco); font-size: 0.72rem; letter-spacing: 0; }
+.carrito-cuenta { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: var(--radio-chico); background: var(--acento); color: var(--blanco); font-size: 0.72rem; letter-spacing: 0; }
 .hamburguesa { background: none; border: 1px solid var(--linea); border-radius: var(--radio-control); padding: 7px 12px; cursor: pointer; font-size: 1.1rem; color: var(--titulo); }
 .acciones-movil { display: none; }
 .menu-movil { display: none; }
@@ -173,20 +193,18 @@ textarea { min-height: 96px; resize: vertical; }
   }
 }
 
-/* Pie en coral, como la barra de aviso */
+/* Pie, del mismo color que la barra de aviso */
 .pie { background: var(--pie-fondo); color: var(--pie-texto); padding: 44px 0 22px; font-size: 0.92rem; }
 .pie .columnas { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 860px) { .pie .columnas { grid-template-columns: 1.3fr 1fr 1fr 1fr; } .pie .columnas > div + div { border-left: 1px solid var(--pie-linea); padding-left: 28px; } }
 .pie img.logo-pie { height: 84px; width: auto; }
-.pie img.logo-pie.claro { display: var(--pie-logo-claro); }
-.pie img.logo-pie.color { display: var(--pie-logo-color); }
 .pie h4 { font: 500 0.76rem var(--ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--pie-texto); margin: 4px 0 12px; }
 .pie a { color: var(--pie-texto); text-decoration: none; }
 .pie a:hover { text-decoration: underline; }
 .pie ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
 .pie .redes { display: flex; gap: 10px; flex-wrap: wrap; }
 .pie .red { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid var(--pie-texto); border-radius: var(--radio-control); color: var(--pie-texto); }
-.pie .red:hover { background: rgba(255, 255, 255, 0.12); text-decoration: none; }
+.pie .red:hover { background: color-mix(in srgb, var(--pie-texto) 12%, transparent); text-decoration: none; }
 .pie .red svg { width: 18px; height: 18px; }
 .pie .base { border-top: 1px solid var(--pie-linea); margin-top: 28px; padding-top: 14px; font-size: 0.82rem; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .prueba { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radio-control); border: 1px solid var(--pie-texto); color: var(--pie-texto); font-size: 0.82rem; }
@@ -215,7 +233,7 @@ textarea { min-height: 96px; resize: vertical; }
 .portada-texto { padding: 24px 0 64px clamp(0px, 15%, 190px); max-width: min(640px, var(--texto-max)); }
 .portada h1 { font-size: clamp(2.1rem, 3.5vw, 2.9rem); margin-bottom: 0.4em; }
 .portada p.entrada { font-size: 1.06rem; max-width: 430px; color: var(--texto); }
-.portada .raya { width: 36px; height: 2px; background: var(--coral); margin: 4px 0 22px; border: 0; }
+.portada .raya { width: 36px; height: 2px; background: var(--acento); margin: 4px 0 22px; border: 0; }
 @media (max-width: 1180px) { .portada-flores { height: 62%; transform: translateX(-30%); } .portada-texto { padding-left: clamp(0px, 9%, 110px); } }
 /* Desde 900 px el encabezado baja a 72 px; si la portada siguiera subiendo 97 px taparía la barra de aviso */
 @media (max-width: 900px) { .portada { --alto-barra: 73px; } }
@@ -243,14 +261,14 @@ textarea { min-height: 96px; resize: vertical; }
 
 /* Pasos para pedir, dentro de un panel durazno */
 .panel-pasos { display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center; }
-@media (min-width: 900px) { .panel-pasos { grid-template-columns: 0.9fr 2.1fr; } .panel-pasos > div:first-child { border-right: 1px solid rgba(111, 52, 33, 0.22); padding-right: 24px; } }
+@media (min-width: 900px) { .panel-pasos { grid-template-columns: 0.9fr 2.1fr; } .panel-pasos > div:first-child { border-right: 1px solid color-mix(in srgb, var(--titulo) 22%, transparent); padding-right: 24px; } }
 .panel-pasos h2 { margin: 0; }
 .pasos { display: grid; gap: 20px; grid-template-columns: 1fr; }
-@media (min-width: 700px) { .pasos { grid-template-columns: repeat(3, 1fr); gap: 0; } .paso + .paso { border-left: 1px solid rgba(111, 52, 33, 0.22); } .paso { padding: 0 22px; } }
+@media (min-width: 700px) { .pasos { grid-template-columns: repeat(3, 1fr); gap: 0; } .paso + .paso { border-left: 1px solid color-mix(in srgb, var(--titulo) 22%, transparent); } .paso { padding: 0 22px; } }
 .paso { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: start; }
-.paso svg { width: 30px; height: 30px; color: var(--coral); grid-row: span 2; margin-top: 2px; }
+.paso svg { width: 30px; height: 30px; color: var(--acento); grid-row: span 2; margin-top: 2px; }
 .paso h3 { margin: 0; font-size: 1.1rem; line-height: 1.25; }
-.paso h3 b { display: block; font: 500 1rem var(--marca); color: var(--coral); }
+.paso h3 b { display: block; font: 500 1rem var(--marca); color: var(--acento); }
 .paso p { grid-column: 2; color: var(--texto); margin: 0; font-size: 0.92rem; }
 .cupo { margin-top: 18px; display: inline-flex; gap: 10px; align-items: center; padding: 9px 18px; border-radius: var(--radio-control); border: 1px solid var(--titulo); color: var(--titulo); font-size: 0.9rem; }
 
@@ -261,16 +279,16 @@ textarea { min-height: 96px; resize: vertical; }
 .pareja img { width: 100%; object-fit: cover; border-radius: var(--radio); border: 6px solid var(--blanco); box-shadow: var(--sombra); }
 .pareja img:first-child { aspect-ratio: 1; }
 .pareja img:last-child { aspect-ratio: 4 / 5; }
-.pareja .trazos { position: absolute; right: -14px; top: -18px; width: 34px; height: 34px; color: var(--coral); }
+.pareja .trazos { position: absolute; right: -14px; top: -18px; width: 34px; height: 34px; color: var(--acento); }
 
 /* Nuestra historia: texto, tres fotos y la cita, en tres columnas */
 .historia { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: center; }
-@media (min-width: 960px) { .historia { grid-template-columns: 1.1fr 1.2fr 0.8fr; } .historia > div:first-child { border-right: 1px solid rgba(111, 52, 33, 0.22); padding-right: 28px; } }
+@media (min-width: 960px) { .historia { grid-template-columns: 1.1fr 1.2fr 0.8fr; } .historia > div:first-child { border-right: 1px solid color-mix(in srgb, var(--titulo) 22%, transparent); padding-right: 28px; } }
 .historia h2 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); }
 .historia p { font-size: 0.95rem; }
 .galeria-historia { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .galeria-historia img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radio); }
-.cita { font: italic 400 clamp(1.15rem, 1.8vw, 1.35rem) var(--marca); color: var(--coral); margin: 0; line-height: 1.4; }
+.cita { font: italic 400 clamp(1.15rem, 1.8vw, 1.35rem) var(--marca); color: var(--acento); margin: 0; line-height: 1.4; }
 .cita::before { content: '“'; display: block; font-size: 2.4rem; line-height: 0.6; margin-bottom: 6px; }
 
 /* Cabecera de las páginas del catálogo */
@@ -324,24 +342,33 @@ textarea { min-height: 96px; resize: vertical; }
 /* Línea de tiempo */
 .tiempo { list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--linea); }
 .tiempo li { position: relative; padding: 0 0 14px 18px; }
-.tiempo li::before { content: ''; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--coral); }
+.tiempo li::before { content: ''; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--acento); }
 
 /* Panel de administración */
 .panel { display: grid; grid-template-columns: 1fr; min-height: 100vh; }
 @media (min-width: 960px) { .panel { grid-template-columns: 248px 1fr; } }
 .lateral { background: var(--titulo); color: var(--crema); padding: 24px 16px; }
 .lateral .logo img { height: 88px; margin: 0 auto 4px 4px; }
-.lateral .papel { font: 500 0.72rem var(--ui); letter-spacing: 0.22em; text-transform: uppercase; color: #f3d9cf; margin: 6px 0 0 6px; }
+.lateral .papel { font: 500 0.72rem var(--ui); letter-spacing: 0.22em; text-transform: uppercase; color: var(--lateral-rotulo); margin: 6px 0 0 6px; }
 .lateral nav { display: flex; flex-direction: column; gap: 2px; margin-top: 20px; }
 @media (max-width: 959px) { .lateral nav { flex-direction: row; flex-wrap: wrap; } }
-.lateral nav a { color: #f6e4dc; text-decoration: none; padding: 9px 12px; border-radius: var(--radio-control); font-size: 0.95rem; }
+.lateral nav a { color: var(--lateral-texto); text-decoration: none; padding: 9px 12px; border-radius: var(--radio-control); font-size: 0.95rem; }
 .lateral nav a:hover, .lateral nav a.router-link-exact-active { background: rgba(255, 255, 255, 0.14); color: var(--blanco); }
-.lateral .salir { margin-top: 20px; font-size: 0.85rem; color: #f6e4dc; }
+.lateral .salir { margin-top: 20px; font-size: 0.85rem; color: var(--lateral-texto); }
 .trabajo { padding: 28px clamp(16px, 3vw, 36px); }
 .cifras { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 .cifra b { display: block; font: 500 2.2rem var(--marca); color: var(--titulo); }
 .cifra span { color: var(--suave); font-size: 0.9rem; }
-.barra-dato { height: 10px; border-radius: var(--radio-chico); background: var(--coral); }
+.barra-dato { height: 10px; border-radius: var(--radio-chico); background: var(--acento); }
 .filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .miniatura { width: 56px; height: 56px; border-radius: var(--radio-chico); object-fit: cover; background: var(--linea); }
-.dia { border-left: 4px solid var(--coral); }
+.dia { border-left: 4px solid var(--acento); }
+
+/* Paletas: una tarjeta por combinación, con sus muestras de color */
+.paletas { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+.paleta h3 { margin: 14px 0 4px; }
+.paleta p { font-size: 0.92rem; min-height: 3.2em; }
+.paleta.elegida { border-color: var(--titulo); }
+.muestras { display: flex; height: 64px; border-radius: var(--radio-control); overflow: hidden; border: 1px solid var(--linea); }
+.muestras span { flex: 1; }
+.muestras span:first-child { flex: 2; }

@@ -199,8 +199,9 @@ textarea { min-height: 96px; resize: vertical; }
 .portada { --banda: min(1320px, 100vw); --plato: clamp(340px, calc(var(--banda) * 0.37), 490px);
   --margen-plato: clamp(20px, calc(var(--banda) * 0.05), 70px); --caja: min(1180px, calc(100vw - 32px));
   --texto-max: calc((100vw + var(--banda)) / 2 - var(--margen-plato) - var(--plato) - (100vw - var(--caja)) / 2 - 28px);
-  position: relative; overflow: hidden; margin-top: -97px; padding-top: 97px;
-  min-height: calc(97px + 36px + var(--plato) * 0.868);
+  --alto-barra: 97px;            /* lo que mide el encabezado con su línea: la portada sube eso, ni más ni menos */
+  position: relative; overflow: hidden; margin-top: calc(-1 * var(--alto-barra)); padding-top: var(--alto-barra);
+  min-height: calc(var(--alto-barra) + 36px + var(--plato) * 0.868);
   display: flex; flex-direction: column; justify-content: flex-end;
   background: linear-gradient(to bottom, var(--pagina) 0, var(--pagina) 16%, var(--portada-medio) 58%, var(--portada-fondo) 100%); }
 .portada-escena { position: absolute; top: 0; bottom: 0; left: 50%; width: min(1320px, 100%); transform: translateX(-50%); pointer-events: none; }
@@ -215,10 +216,12 @@ textarea { min-height: 96px; resize: vertical; }
 .portada p.entrada { font-size: 1.06rem; max-width: 430px; color: var(--texto); }
 .portada .raya { width: 36px; height: 2px; background: var(--coral); margin: 4px 0 22px; border: 0; }
 @media (max-width: 1180px) { .portada-flores { height: 62%; transform: translateX(-30%); } .portada-texto { padding-left: clamp(0px, 9%, 110px); } }
+/* Desde 900 px el encabezado baja a 72 px; si la portada siguiera subiendo 97 px taparía la barra de aviso */
+@media (max-width: 900px) { .portada { --alto-barra: 73px; } }
 @media (max-width: 760px) {
   /* En el celular todo se junta detrás del texto, sin una fila aparte: plato y flores desenfocados y un velo claro
      encima para que el texto se lea bien */
-  .portada { margin-top: -73px; padding-top: 73px; min-height: 0; justify-content: flex-start; }
+  .portada { min-height: 0; justify-content: flex-start; }
   .portada::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.72) 30%, rgba(255, 255, 255, 0.6) 100%); pointer-events: none; }
   .portada-escena { left: 0; width: 100%; transform: none; }
   .portada-plato { right: -26%; bottom: -12%; width: 92vw; transform: none; filter: blur(2.5px); }

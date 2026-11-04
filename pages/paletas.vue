@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PALETAS } from '~/composables/usePaleta'
 
-// Las combinaciones de color para decidir con el equipo: al elegir una, toda la tienda cambia en este navegador.
+// Las combinaciones de color para decidir con el equipo: al elegir una, todo el sitio cambia en este navegador.
 const { paleta, elegir } = usePaleta()
 useHead({ title: 'Paletas · Lizis Pastelería', meta: [{ name: 'robots', content: 'noindex' }] })
 </script>
@@ -10,7 +10,7 @@ useHead({ title: 'Paletas · Lizis Pastelería', meta: [{ name: 'robots', conten
   <section class="cabecera contenedor">
     <span class="rotulo">Para decidir el color</span>
     <h1>Paletas de la tienda</h1>
-    <p>Elige una y la tienda completa cambia en este navegador. Recorre las páginas con ella y vuelve aquí para probar otra.</p>
+    <p>Elige una y cambia todo el sitio en este navegador, también tu cuenta y el panel de administración. Recorre las páginas con ella y vuelve aquí para probar otra.</p>
   </section>
   <section class="seccion contenedor" style="padding-top: 24px">
     <div class="paletas">

@@ -9,12 +9,12 @@ export interface Paleta {
 
 // Las combinaciones de color que se exploraron al implementar la tienda, para que la propietaria elija la definitiva.
 // La primera, Coral, es la que propone el equipo. Todas conservan la página blanca; cambian la barra de aviso, el pie,
-// los botones, los títulos y el logo. Los valores viven en main.css.
+// el menú del panel, los botones, los títulos y el logo en todo el sitio. Los valores viven en main.css.
 export const PALETAS: Paleta[] = [
   {
     id: 'coral',
     nombre: 'Coral',
-    detalle: 'Barra de aviso, pie y botones en coral; títulos en vino y paneles en galleta.',
+    detalle: 'Barra de aviso, pie, menú del panel y botones en coral; títulos en vino y paneles en galleta.',
     muestras: ['#be514c', '#752a32', '#f6e3c9', '#ffffff'],
     logo: '/marca/logo-lizis-coral.png',
     logoPie: '/marca/logo-lizis-blanco.png',
@@ -22,7 +22,7 @@ export const PALETAS: Paleta[] = [
   {
     id: 'cafe',
     nombre: 'Café',
-    detalle: 'Barra de aviso, pie y botones en café; títulos en cacao y paneles en galleta.',
+    detalle: 'Barra de aviso, pie, menú del panel y botones en café; títulos en cacao y paneles en galleta.',
     muestras: ['#9a644b', '#542624', '#f6e3c9', '#ffffff'],
     logo: '/marca/logo-lizis.png',
     logoPie: '/marca/logo-lizis-blanco.png',
@@ -30,7 +30,7 @@ export const PALETAS: Paleta[] = [
   {
     id: 'cacao',
     nombre: 'Cacao',
-    detalle: 'Barra de aviso y pie en cacao con letras crema; botones en café y paneles en galleta.',
+    detalle: 'Barra de aviso, pie y menú del panel en cacao con letras crema; botones en café y paneles en galleta.',
     muestras: ['#542624', '#9a644b', '#f6e3c9', '#ffffff'],
     logo: '/marca/logo-lizis.png',
     logoPie: '/marca/logo-lizis-crema.png',
@@ -38,7 +38,7 @@ export const PALETAS: Paleta[] = [
   {
     id: 'galleta',
     nombre: 'Galleta',
-    detalle: 'Barra de aviso y pie en galleta con letras cacao; botones en café.',
+    detalle: 'Barra de aviso, pie y menú del panel en galleta con letras cacao; botones en café.',
     muestras: ['#f6e3c9', '#542624', '#9a644b', '#ffffff'],
     logo: '/marca/logo-lizis.png',
     logoPie: '/marca/logo-lizis.png',

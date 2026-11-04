@@ -1,7 +1,8 @@
 /* Lizis Pastelería · página blanca y paneles en color galleta, Lora para los títulos y Jost para la interfaz. La barra de
-   aviso, el pie, los botones, los títulos y el logo cambian con la paleta (/?paleta=, composables/usePaleta.ts):
-   la tienda abre con Coral, la que propone el equipo. :root lleva los valores de Café y cada paleta, también Coral,
-   redefine sólo lo que la distingue. */
+   aviso, el pie, el menú del panel, los botones, los títulos y el logo cambian con la paleta (/?paleta=,
+   composables/usePaleta.ts) en todo el sitio, también en la cuenta y en el panel de administración: la tienda abre con
+   Coral, la que propone el equipo. :root lleva los valores de Café y cada paleta, también Coral, redefine sólo lo que
+   la distingue. */
 
 :root {
   --pagina: #ffffff;             /* fondo de la página y del encabezado, en todas las paletas */
@@ -26,7 +27,8 @@
   --fondo-tarjeta: #fef8ee;
   --franja-fondo: var(--acento); --franja-texto: #ffffff;
   --pie-fondo: var(--acento); --pie-texto: #ffffff; --pie-linea: rgba(255, 255, 255, 0.35);
-  --lateral-texto: #f7efe4; --lateral-rotulo: #f3e6d6;   /* menú del panel sobre el color de los títulos (10:1) */
+  /* Menú del panel: del mismo color que el pie, con la opción elegida un tono más oscura (6.3:1) */
+  --lateral-fondo: var(--pie-fondo); --lateral-texto: var(--pie-texto); --lateral-activo: var(--acento-oscuro);
   --portada-medio: #f9efe4; --portada-fondo: #f4e6d4;
   --exito: #13602e;
   --aviso: #6c4700;
@@ -46,10 +48,11 @@ html[data-paleta="cacao"] {
   --pie-fondo: #542624; --pie-texto: #f7f1e3; --pie-linea: rgba(247, 241, 227, 0.3);
 }
 
-/* Galleta: barra de aviso y pie en galleta con letras cacao (10:1) */
+/* Galleta: barra de aviso, pie y menú del panel en galleta con letras cacao (10:1; la opción elegida, 8:1) */
 html[data-paleta="galleta"] {
   --franja-fondo: #f6e3c9; --franja-texto: #542624;
   --pie-fondo: #f6e3c9; --pie-texto: #542624; --pie-linea: rgba(84, 38, 36, 0.2);
+  --lateral-activo: #e3ccb5;
 }
 
 /* Coral: barra de aviso, pie y botones en coral con texto blanco (4.7:1) y títulos en vino */
@@ -57,7 +60,6 @@ html[data-paleta="coral"] {
   --acento: #be514c; --acento-oscuro: #a63c38;
   --terracota: #be514c; --terracota-oscuro: #aa403b; --rotulo: #aa403b;
   --titulo: #752a32; --cafe: #752a32; --cafe-oscuro: #5a1e25;
-  --lateral-texto: #f6e4dc; --lateral-rotulo: #f3d9cf;
   --portada-medio: #fdeae1; --portada-fondo: #fee5db;
 }
 
@@ -348,13 +350,13 @@ textarea { min-height: 96px; resize: vertical; }
 /* Panel de administración */
 .panel { display: grid; grid-template-columns: 1fr; min-height: 100vh; }
 @media (min-width: 960px) { .panel { grid-template-columns: 248px 1fr; } }
-.lateral { background: var(--titulo); color: var(--crema); padding: 24px 16px; }
+.lateral { background: var(--lateral-fondo); color: var(--lateral-texto); padding: 24px 16px; }
 .lateral .logo img { height: 88px; margin: 0 auto 4px 4px; }
-.lateral .papel { font: 500 0.72rem var(--ui); letter-spacing: 0.22em; text-transform: uppercase; color: var(--lateral-rotulo); margin: 6px 0 0 6px; }
+.lateral .papel { font: 500 0.72rem var(--ui); letter-spacing: 0.22em; text-transform: uppercase; color: var(--lateral-texto); margin: 6px 0 0 6px; }
 .lateral nav { display: flex; flex-direction: column; gap: 2px; margin-top: 20px; }
 @media (max-width: 959px) { .lateral nav { flex-direction: row; flex-wrap: wrap; } }
 .lateral nav a { color: var(--lateral-texto); text-decoration: none; padding: 9px 12px; border-radius: var(--radio-control); font-size: 0.95rem; }
-.lateral nav a:hover, .lateral nav a.router-link-exact-active { background: rgba(255, 255, 255, 0.14); color: var(--blanco); }
+.lateral nav a:hover, .lateral nav a.router-link-exact-active { background: var(--lateral-activo); color: var(--lateral-texto); }
 .lateral .salir { margin-top: 20px; font-size: 0.85rem; color: var(--lateral-texto); }
 .trabajo { padding: 28px clamp(16px, 3vw, 36px); }
 .cifras { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }

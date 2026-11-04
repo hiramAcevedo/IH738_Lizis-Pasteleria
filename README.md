@@ -50,8 +50,9 @@ pnpm dev                # http://localhost:3738
 ```
 
 La base se arma con los archivos de `supabase/migrations/` en orden y el catálogo de prueba con `supabase/seed.sql`.
-La paleta de color se prueba en `/paletas` (o con `?paleta=coral`, `cafe`, `cacao` o `galleta`): la lista está en
-`composables/usePaleta.ts` y los valores en `assets/css/main.css`.
+La paleta de color se prueba en `/paletas` (o con `?paleta=coral`, `cafe`, `cacao` o `galleta`) y cambia todo el
+sitio, también la cuenta del cliente y el panel de administración: la lista está en `composables/usePaleta.ts` y los
+valores en `assets/css/main.css`.
 Las fotos del catálogo son de la pastelería en los productos que ya las tienen y de Unsplash (licencia libre) en los
 demás; los precios son provisionales: los definitivos, con sus fotos, los carga la propietaria desde el panel.
 

@@ -1,7 +1,7 @@
 import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
 
 // Al volver de Stripe: se consulta la sesión en Stripe y sólo si está pagada, es de este pedido y cobra su total,
-// el pedido pasa a «pagado» con la clave del servidor.
+// el pedido pasa a «pagado» con la clave del servidor y sale el correo de confirmación de compra.
 export default defineEventHandler(async (event) => {
   const usuario = await serverSupabaseUser(event).catch(() => null)
   if (!usuario) throw createError({ statusCode: 401, statusMessage: 'Inicia sesión' })
@@ -23,5 +23,9 @@ export default defineEventHandler(async (event) => {
   const { claveServidor } = useRuntimeConfig()
   const { data: estado, error } = await supabase.rpc('confirmar_pago', { p_folio: folio, p_sesion: session_id, p_clave: claveServidor })
   if (error) throw createError({ statusCode: 500, statusMessage: error.message })
-  return { estado }
+
+  // El pedido estaba pendiente al empezar esta petición y ya quedó pagado: se avisa al cliente por correo.
+  // Si dos peticiones llegan juntas, Resend descarta la segunda por su llave de idempotencia.
+  const correo = estado === 'pagado' ? await avisarPedidoPagado(event, supabase, folio, usuario as any) : 'omitido'
+  return { estado, correo }
 })

@@ -24,9 +24,10 @@ onMounted(async () => {
   const pago = route.query.pago as string | undefined
   if (pago === 'exito' && route.query.session_id) {
     try {
-      const r = await $fetch<{ estado: string }>('/api/pagos/confirmar', { method: 'POST', body: { folio, session_id: route.query.session_id } })
+      const r = await $fetch<{ estado: string; correo?: string }>('/api/pagos/confirmar', { method: 'POST', body: { folio, session_id: route.query.session_id } })
+      const aviso = r.correo === 'enviado' || r.correo === 'repetido' ? ' Te enviamos la confirmación a tu correo.' : ''
       nota.value = r.estado === 'pagado'
-        ? { tipo: 'ok', texto: '¡Pago recibido! Tu pedido ya está en la lista de la pastelería.' }
+        ? { tipo: 'ok', texto: `¡Pago recibido! Tu pedido ya está en la lista de la pastelería.${aviso}` }
         : { tipo: '', texto: `Tu pedido está ${ESTADOS[r.estado]?.toLowerCase() ?? r.estado}.` }
     } catch (e: any) {
       nota.value = { tipo: 'mal', texto: e?.data?.statusMessage ?? 'No se pudo confirmar el pago con Stripe' }

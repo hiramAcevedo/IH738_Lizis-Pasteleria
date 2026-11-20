@@ -42,7 +42,7 @@ useHead({ title: 'Productos · Lizis Pastelería' })
       </div>
     </div>
     <div class="rejilla-productos" style="margin-top: 24px">
-      <ProductoCard v-for="p in visibles" :key="p.id" :producto="p" />
+      <ProductoCard v-for="(p, i) in visibles" :key="p.id" :producto="p" :nivel="2" :prioridad="i < 2" />
     </div>
     <p v-if="!visibles.length" class="suave" style="margin-top: 24px">No hay productos con esa búsqueda.</p>
   </section>

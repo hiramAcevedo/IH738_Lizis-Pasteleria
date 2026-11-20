@@ -1,0 +1,19 @@
+{
+  "/fotos/brownie-caramelo.jpg": {"ancho": 573, "alto": 651, "anchos": [160, 240, 320, 480, 573]},
+  "/fotos/brownies-charola.jpg": {"ancho": 960, "alto": 1088, "anchos": [160, 240, 320, 480, 640, 800, 960]},
+  "/fotos/brownies-fresa-nuez.jpg": {"ancho": 1026, "alto": 1088, "anchos": [160, 240, 320, 480, 640, 800, 960]},
+  "/fotos/flores-capa.webp": {"ancho": 368, "alto": 900, "anchos": [160, 240, 320, 368]},
+  "/fotos/pastel-cumpleanos.jpg": {"ancho": 651, "alto": 651, "anchos": [160, 240, 320, 480, 651]},
+  "/fotos/pastel-flores.jpg": {"ancho": 1088, "alto": 1088, "anchos": [160, 240, 320, 480, 640, 800, 960]},
+  "/fotos/plato-capa.webp": {"ancho": 900, "alto": 953, "anchos": [160, 240, 320, 480, 640, 800, 900]},
+  "/fotos/rol-glaseado.jpg": {"ancho": 870, "alto": 1088, "anchos": [160, 240, 320, 480, 640, 870]},
+  "/fotos/roles-masa.jpg": {"ancho": 521, "alto": 651, "anchos": [160, 240, 320, 521]},
+  "/fotos/roles-toppings.jpg": {"ancho": 1088, "alto": 816, "anchos": [160, 240, 320, 480, 640, 800, 960]},
+  "/fotos/tartaletas-charola.jpg": {"ancho": 898, "alto": 1088, "anchos": [160, 240, 320, 480, 640, 800, 898]},
+  "/fotos/tartaletas.jpg": {"ancho": 898, "alto": 1088, "anchos": [160, 240, 320, 480, 640, 800, 898]},
+  "/fotos/utensilios-capa.webp": {"ancho": 443, "alto": 900, "anchos": [160, 240, 320, 443]},
+  "/marca/logo-lizis-blanco.png": {"ancho": 440, "alto": 600, "anchos": [80, 120, 160, 240]},
+  "/marca/logo-lizis-coral.png": {"ancho": 440, "alto": 600, "anchos": [80, 120, 160, 240]},
+  "/marca/logo-lizis-crema.png": {"ancho": 440, "alto": 600, "anchos": [80, 120, 160, 240]},
+  "/marca/logo-lizis.png": {"ancho": 440, "alto": 600, "anchos": [80, 120, 160, 240]}
+}

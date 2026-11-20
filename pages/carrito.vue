@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { dinero } from '~/composables/useFormato'
+import { foto, type Caja } from '~/composables/useImagen'
+
+const MINIATURA: Caja[] = [['', '56px', 1]]
 const { lineas, subtotal, cambiar, quitar } = useCarrito()
 useHead({ title: 'Carrito · Lizis Pastelería' })
 </script>
@@ -14,13 +17,13 @@ useHead({ title: 'Carrito · Lizis Pastelería' })
       </div>
       <div v-else class="dos">
         <div class="tarjeta desliza">
-          <table class="tabla">
+          <table class="tabla apilada lineas-carrito">
             <thead><tr><th>Producto</th><th>Cantidad</th><th class="num">Importe</th><th /></tr></thead>
             <tbody>
               <tr v-for="l in lineas" :key="l.clave">
                 <td>
                   <div class="fila" style="flex-wrap: nowrap">
-                    <img :src="l.imagen || '/marca/icono.png'" :alt="l.nombre" class="miniatura">
+                    <img v-bind="foto(l.imagen, MINIATURA)" :alt="l.nombre" class="miniatura">
                     <div>
                       <NuxtLink :to="`/productos/${l.slug}`"><b>{{ l.nombre }}</b></NuxtLink>
                       <div class="suave chico">{{ l.variantes.map((v) => `${v.grupo}: ${v.nombre}`).join(' · ') }}</div>

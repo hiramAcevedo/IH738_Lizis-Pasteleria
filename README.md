@@ -58,6 +58,9 @@ sitio, también la cuenta del cliente y el panel de administración: la lista es
 valores en `assets/css/main.css`.
 Las fotos del catálogo son de la pastelería en los productos que ya las tienen y de Unsplash (licencia libre) en los
 demás; los precios son provisionales: los definitivos, con sus fotos, los carga la propietaria desde el panel.
+Las fotos y los logotipos de `public/` se sirven en WebP con `srcset`, del ancho que muestra cada pantalla: al agregar o
+cambiar una, `uv run scripts/imagenes.py` rehace sus variantes y `composables/imagenes.json`. Lora y Jost se sirven desde
+el sitio (`assets/fonts/`), sin pedirlas a Google Fonts.
 
 ## Correos
 
@@ -86,8 +89,9 @@ Salen de `lizispasteleria.shop`, verificado en Resend.
 pages/            tienda (inicio, productos, carrito, pedido, mis pedidos, pastel personalizado) y admin/
 layouts/          la tienda y el panel
 middleware/       cuenta (cliente con sesión) y admin (rol de administración)
-composables/      carrito, perfil, formatos y avisos
+composables/      carrito, perfil, formatos, avisos e imágenes con srcset
 server/api/pagos/ abrir la sesión de Stripe y confirmar el pago al volver, con el correo de confirmación
 server/utils/     Stripe y el envío de correos con Resend
 supabase/         tablas, reglas de negocio, seguridad, catálogo de prueba y plantillas de correo de Auth
+scripts/          variantes WebP de las fotos y los logotipos de public/
 ```

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { dinero } from '~/composables/useFormato'
+import { imagen } from '~/composables/useImagen'
 
 const supabase = useSupabaseClient()
 const usuario = useSupabaseUser()
@@ -47,7 +48,7 @@ async function salir() {
           <NuxtLink to="/pastel-personalizado">Pasteles personalizados</NuxtLink>
         </nav>
         <NuxtLink to="/" class="logo" aria-label="Lizis Pastelería, inicio">
-          <img :src="paleta.logo" alt="Lizis Pastelería" width="440" height="600">
+          <img v-bind="imagen(paleta.logo)" sizes="(max-width: 900px) 41px, 57px" alt="Lizis Pastelería" width="440" height="600">
         </NuxtLink>
         <nav class="menu derecha" aria-label="Cuenta">
           <NuxtLink v-if="esAdmin" to="/admin">Administración</NuxtLink>
@@ -77,11 +78,11 @@ async function salir() {
       <div class="contenedor">
         <div class="columnas">
           <div class="pila">
-            <img class="logo-pie" :src="paleta.logoPie" alt="Lizis Pastelería" width="440" height="600">
+            <img class="logo-pie" v-bind="imagen(paleta.logoPie)" sizes="62px" alt="Lizis Pastelería" width="440" height="600" loading="lazy">
             <p style="margin: 0">Repostería artesanal hecha a mano en Guadalajara, Jalisco.</p>
           </div>
           <div>
-            <h4>La tienda</h4>
+            <h2>La tienda</h2>
             <ul>
               <li><NuxtLink to="/productos">Productos</NuxtLink></li>
               <li><NuxtLink to="/pastel-personalizado">Pasteles personalizados</NuxtLink></li>
@@ -90,7 +91,7 @@ async function salir() {
             </ul>
           </div>
           <div>
-            <h4>Pedidos</h4>
+            <h2>Pedidos</h2>
             <ul>
               <li>Con {{ ajustes?.dias_anticipacion ?? 2 }} días de anticipación</li>
               <li v-if="horario">Entregas de {{ horario }}</li>
@@ -99,7 +100,7 @@ async function salir() {
             </ul>
           </div>
           <div>
-            <h4>Contacto</h4>
+            <h2>Contacto</h2>
             <div class="redes">
               <a v-if="contacto.whatsapp" :href="contacto.whatsapp" target="_blank" rel="noopener" class="red">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.6z" /><path d="M9.2 8.8c.3-.6.9-.6 1.2-.1l.7 1.5c.1.3 0 .5-.2.7l-.4.5c.6 1.1 1.5 2 2.6 2.6l.5-.4c.2-.2.5-.3.7-.2l1.5.7c.5.3.5.9-.1 1.2-.8.5-1.9.6-3-.1-1.4-.8-2.6-2-3.4-3.4-.6-1.1-.6-2.2-.1-3z" /></svg>

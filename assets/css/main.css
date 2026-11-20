@@ -3,6 +3,12 @@
    composables/usePaleta.ts) en todo el sitio, también en la cuenta y en el panel de administración: la tienda abre con
    Café, la que propone el equipo, y :root lleva sus valores; cada una de las otras redefine sólo lo que la distingue. */
 
+/* Lora y Jost, servidas desde el sitio: el subconjunto latino de Google Fonts (licencia OFL) con los mismos pesos que
+   se pedían allá. Sin la hoja externa, nada detiene el primer pintado; mientras llegan, el texto sale con la de sistema. */
+@font-face { font-family: 'Lora'; font-style: normal; font-weight: 500 600; font-display: swap; src: url('../fonts/lora-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Lora'; font-style: italic; font-weight: 500; font-display: swap; src: url('../fonts/lora-italica-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 400 600; font-display: swap; src: url('../fonts/jost-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
 :root {
   --pagina: #ffffff;             /* fondo de la página y del encabezado, en todas las paletas */
   --crema: #fcf4e4;
@@ -158,7 +164,7 @@ textarea { min-height: 96px; resize: vertical; }
 .rejilla { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
 .rejilla-productos { display: grid; gap: 28px 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (min-width: 900px) { .rejilla-productos { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 24px; } }
-@media (max-width: 599px) { .rejilla-productos .producto h3 { font-size: 1.08rem; } }
+@media (max-width: 599px) { .rejilla-productos .producto .nombre { font-size: 1.08rem; } }
 .dos { display: grid; gap: 32px; grid-template-columns: 1fr; }
 @media (min-width: 860px) { .dos { grid-template-columns: 1.1fr 0.9fr; } }
 
@@ -204,7 +210,7 @@ textarea { min-height: 96px; resize: vertical; }
 .pie .columnas { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 860px) { .pie .columnas { grid-template-columns: 1.3fr 1fr 1fr 1fr; } .pie .columnas > div + div { border-left: 1px solid var(--pie-linea); padding-left: 28px; } }
 .pie img.logo-pie { height: 84px; width: auto; }
-.pie h4 { font: 500 0.76rem var(--ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--pie-texto); margin: 4px 0 12px; }
+.pie h2 { font: 500 0.76rem var(--ui); letter-spacing: 0.2em; text-transform: uppercase; color: var(--pie-texto); margin: 4px 0 12px; }
 .pie a { color: var(--pie-texto); text-decoration: none; }
 .pie a:hover { text-decoration: underline; }
 .pie ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
@@ -274,7 +280,7 @@ textarea { min-height: 96px; resize: vertical; }
 .paso { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: start; }
 .paso svg { width: 30px; height: 30px; color: var(--acento); grid-row: span 2; margin-top: 2px; }
 .paso h3 { margin: 0; font-size: 1.1rem; line-height: 1.25; }
-.paso h3 b { display: block; font: 500 1rem var(--marca); color: var(--acento); }
+.paso h3 b { display: block; font: 500 1rem var(--marca); color: var(--acento-oscuro); }
 .paso p { grid-column: 2; color: var(--texto); margin: 0; font-size: 0.92rem; }
 .cupo { margin-top: 18px; display: inline-flex; gap: 10px; align-items: center; padding: 9px 18px; border-radius: var(--radio-control); border: 1px solid var(--titulo); color: var(--titulo); font-size: 0.9rem; }
 
@@ -308,7 +314,7 @@ textarea { min-height: 96px; resize: vertical; }
 .producto:hover img { transform: scale(1.04); }
 .producto .cuerpo { padding: 12px 4px 4px; display: flex; flex-direction: column; gap: 3px; flex: 1; }
 .producto .cat { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--terracota-oscuro); font-weight: 500; }
-.producto h3 { margin: 0; font-size: 1.15rem; }
+.producto .nombre { margin: 0; font-size: 1.15rem; }
 .producto .precio { color: var(--texto); font-size: 0.95rem; }
 .producto .ver { margin-top: 6px; font-size: 0.88rem; font-weight: 500; color: var(--terracota-oscuro); text-decoration: none; }
 .producto .ver:hover { text-decoration: underline; }
@@ -329,6 +335,25 @@ textarea { min-height: 96px; resize: vertical; }
 .tabla tr:last-child td { border-bottom: 0; }
 .tabla .num { text-align: right; white-space: nowrap; }
 .desliza { overflow-x: auto; }
+/* En el teléfono, las tablas del carrito y de Mis pedidos se leen fila por fila: cada fila es un bloque y los
+   encabezados quedan sólo para el lector de pantalla. Carrito: el producto arriba; cantidad, importe y Quitar abajo.
+   Pedidos y pasteles: folio y estado arriba; entrega y total (o el pastel y la cotización) debajo. El estado ocupa
+   todo el renglón, alineado a la derecha, para no ensanchar la columna del total. */
+@media (max-width: 560px) {
+  .tabla.apilada, .tabla.apilada tbody { display: block; }
+  .tabla.apilada thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .tabla.apilada tr { display: grid; grid-template-columns: 1fr auto; gap: 10px 12px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--linea); }
+  .tabla.apilada tr:first-child { padding-top: 0; }
+  .tabla.apilada tr:last-child { padding-bottom: 0; border-bottom: 0; }
+  .tabla.apilada td { display: block; padding: 0; border: 0; }
+  .tabla.lineas-carrito tr { grid-template-columns: auto 1fr auto; column-gap: 8px; align-items: center; }
+  .lineas-carrito td:first-child { grid-column: 1 / -1; }
+  .lista-pedidos td:first-child, .lista-pasteles td:first-child { grid-area: 1 / 1; }
+  .lista-pedidos td:nth-child(3), .lista-pasteles td:nth-child(3) { grid-area: 1 / 1 / 2 / -1; justify-self: end; }
+  .lista-pedidos td:nth-child(2) { grid-area: 2 / 1; }
+  .lista-pedidos td:nth-child(4) { grid-area: 2 / 2; }
+  .lista-pasteles td:nth-child(2), .lista-pasteles td:nth-child(4) { grid-column: 1 / -1; }
+}
 
 /* Estados: la misma luminosidad y croma, sólo cambia el tono */
 .estado { display: inline-block; padding: 3px 10px; border-radius: var(--radio-chico); font-size: 0.8rem; font-weight: 500; white-space: nowrap; }

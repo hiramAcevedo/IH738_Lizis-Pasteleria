@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { dinero } from '~/composables/useFormato'
+import { foto, type Caja } from '~/composables/useImagen'
+
+// La foto cuadrada mide 440 px y, en el teléfono, lo que deja el margen; es lo primero que se ve y se pide primero
+const CAJA: Caja[] = [['(min-width: 472px)', '440px', 1], ['', 'calc(100vw - 32px)', 1]]
 
 const supabase = useSupabaseClient()
 const route = useRoute()
@@ -56,7 +60,7 @@ useHead({ title: `${producto.value.nombre} · Lizis Pastelería` })
   <section v-if="producto" class="seccion contenedor">
     <p class="chico"><NuxtLink to="/productos">Productos</NuxtLink> / <NuxtLink :to="{ path: '/productos', query: { categoria: producto.categorias?.slug } }">{{ producto.categorias?.nombre }}</NuxtLink></p>
     <div class="detalle">
-      <img :src="producto.imagen_url || '/marca/icono.png'" :alt="producto.nombre" class="foto-detalle">
+      <img v-bind="foto(producto.imagen_url, CAJA)" :alt="producto.nombre" class="foto-detalle" fetchpriority="high">
       <div class="pila">
         <h1>{{ producto.nombre }}</h1>
         <div class="precio-grande">{{ dinero(unitario) }}</div>

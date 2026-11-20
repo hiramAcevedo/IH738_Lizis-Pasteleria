@@ -25,7 +25,7 @@ useHead({ title: 'Mis pedidos · Lizis Pastelería' })
   <section class="seccion contenedor pila">
     <h1>Mis pedidos</h1>
     <div class="tarjeta desliza">
-      <table v-if="data?.pedidos.length" class="tabla">
+      <table v-if="data?.pedidos.length" class="tabla apilada lista-pedidos">
         <thead><tr><th>Folio</th><th>Entrega</th><th>Estado</th><th class="num">Total</th></tr></thead>
         <tbody>
           <tr v-for="p in data.pedidos" :key="p.id">
@@ -41,7 +41,7 @@ useHead({ title: 'Mis pedidos · Lizis Pastelería' })
 
     <h2 style="margin-top: 28px">Pasteles personalizados</h2>
     <div class="tarjeta desliza">
-      <table v-if="data?.solicitudes.length" class="tabla">
+      <table v-if="data?.solicitudes.length" class="tabla apilada lista-pasteles">
         <thead><tr><th>Folio</th><th>Pastel</th><th>Estado</th><th>Cotización</th></tr></thead>
         <tbody>
           <tr v-for="s in data.solicitudes" :key="s.id">

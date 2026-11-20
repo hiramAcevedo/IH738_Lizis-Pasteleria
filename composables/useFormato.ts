@@ -49,6 +49,13 @@ export function mensajeDeError(e: any) {
   if (m.includes('User already registered')) return 'Ya existe una cuenta con ese correo'
   if (m.includes('Password should be')) return 'La contraseña debe tener al menos 8 caracteres'
   if (m.includes('Email not confirmed')) return 'Confirma tu correo antes de entrar'
+  // Los enlaces de los correos sirven una sola vez y vencen; estos dos van antes de «is invalid».
+  if (m.includes('Email link is invalid') || m.includes('Token has expired')) return 'El enlace ya se usó o venció. Pide uno nuevo.'
   if (m.includes('is invalid')) return 'Ese correo no es válido'
+  if (m.includes('For security purposes')) return 'Espera un minuto antes de pedir otro correo'
+  if (m.includes('rate limit')) return 'Se enviaron demasiados correos; inténtalo más tarde'
+  if (m.includes('should be different')) return 'La contraseña nueva debe ser distinta de la anterior'
+  if (m.includes('Auth session missing')) return 'Abre otra vez el enlace del correo para cambiar tu contraseña'
+  if (m.includes('Error sending')) return 'No se pudo enviar el correo; inténtalo en un momento'
   return m
 }

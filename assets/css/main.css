@@ -127,6 +127,10 @@ img { max-width: 100%; display: block; }
 .boton.peligro { background: transparent; color: var(--peligro); border-color: var(--peligro); }
 .boton.chico { padding: 8px 16px; font-size: 0.85rem; }
 .boton.bloque { width: 100%; }
+/* Acción secundaria con aspecto de enlace («¿Olvidaste tu contraseña?») */
+.boton-texto { background: none; border: 0; padding: 0; font: 500 0.9rem var(--ui); color: var(--terracota-oscuro); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.boton-texto:hover { color: var(--titulo); }
+.boton-texto:disabled { opacity: 0.55; cursor: not-allowed; }
 
 /* Formularios */
 .campo { display: grid; gap: 6px; }

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restablece tu contraseña de Lizis Pastelería</title>
+</head>
+<body style="margin:0;padding:0;background:#fcf4e4;font-family:Jost,'Helvetica Neue',Arial,sans-serif;color:#5f544b;">
+  <span style="display:none;max-height:0;overflow:hidden;opacity:0;">Elige una contraseña nueva para tu cuenta.</span>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#fcf4e4;padding:24px 0;">
+    <tr><td align="center" style="padding:0 12px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;background:#ffffff;border:1px solid #ecdcc8;border-radius:14px;overflow:hidden;">
+        <tr><td align="center" style="background:#9a644b;padding:18px 32px;">
+          <img src="{{ .SiteURL }}/marca/logo-lizis-blanco.png" width="64" height="88" alt="Lizis Pastelería" style="display:block;border:0;width:64px;height:88px;color:#ffffff;font-family:Lora,Georgia,serif;font-size:20px;">
+        </td></tr>
+        <tr><td style="padding:32px 32px 8px;">
+          <h1 style="margin:0 0 12px;font-family:Lora,Georgia,'Times New Roman',serif;font-size:26px;font-weight:500;line-height:1.2;color:#542624;">Elige una contraseña nueva</h1>
+          <p style="margin:0;font-size:15px;line-height:1.6;">Recibimos una solicitud para cambiar la contraseña de la cuenta {{ .Email }} en Lizis Pastelería.</p>
+        </td></tr>
+        <tr><td style="padding:20px 32px 8px;">
+          <a href="{{ .SiteURL }}/entrar?token_hash={{ .TokenHash }}&amp;type=recovery" style="display:block;text-align:center;background:#9a644b;color:#ffffff;text-decoration:none;font-weight:600;font-size:16px;padding:14px;border-radius:10px;">Elegir mi contraseña nueva</a>
+        </td></tr>
+        <tr><td style="padding:12px 32px 32px;font-size:14px;line-height:1.6;">
+          <p style="margin:0 0 12px;">El enlace sirve una sola vez. Si no pediste el cambio, ignora este correo: tu contraseña sigue igual.</p>
+          <p style="margin:0;font-size:13px;color:#6e6258;">Si el botón no abre, copia este enlace en tu navegador:<br>
+            <a href="{{ .SiteURL }}/entrar?token_hash={{ .TokenHash }}&amp;type=recovery" style="color:#85543d;word-break:break-all;">{{ .SiteURL }}/entrar?token_hash={{ .TokenHash }}&amp;type=recovery</a></p>
+        </td></tr>
+        <tr><td style="background:#fcf4e4;padding:20px 32px;font-size:12px;line-height:1.6;color:#6e6258;">
+          Lizis Pastelería · Guadalajara, Jalisco · <a href="mailto:contacto@lizispasteleria.shop" style="color:#85543d;">contacto@lizispasteleria.shop</a>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
